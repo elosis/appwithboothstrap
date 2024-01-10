@@ -26,7 +26,27 @@ const Books = () => {
           </div>
           <div className="d-flex flex-column">
             <i className="bi bi-wallet-fill custom-icon"></i>
-            <span>BESTSELLERS https://www.barnesandnoble.com/</span>
+            <span>BESTSELLERS</span>
+          </div>
+          <div className="d-flex flex-column">
+            <i className="bi bi-book custom-icon"></i>
+            <span>NEW RELEASES</span>
+          </div>
+          <div className="d-flex flex-column">
+            <i className="bi bi-pencil-square custom-icon"></i>
+            <span>SIGNED EDITIONS</span>
+          </div>
+          <div className="d-flex flex-column">
+            <i className="bi bi-optical-audio-fill custom-icon"></i>
+            <span>AUDIOBOOKS</span>
+          </div>
+          <div className="d-flex flex-column">
+            <i className="bi bi-scissors custom-icon"></i>
+            <span>COUPONS & DEALS</span>
+          </div>
+          <div className="d-flex flex-column">
+            <i className="bi bi-gift-fill custom-icon"></i>
+            <span>GIFT CARDS</span>
           </div>
         </div>
         <button
