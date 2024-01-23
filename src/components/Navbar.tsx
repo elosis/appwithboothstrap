@@ -6,7 +6,7 @@ const Navbar = () => {
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
         <a className="navbar-brand" href="#">
-          Navbar
+          B&S
         </a>
         <button
           className="navbar-toggler"
@@ -28,7 +28,7 @@ const Navbar = () => {
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#">
-                Link
+                Stores & Events
               </a>
             </li>
             <li className="nav-item dropdown">
@@ -39,25 +39,37 @@ const Navbar = () => {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Dropdown
+                Books
               </a>
               <ul className="dropdown-menu">
                 <li>
                   <a className="dropdown-item" href="#">
-                    Action
+                    Fiction
                   </a>
                 </li>
                 <li>
                   <a className="dropdown-item" href="#">
-                    Another action
+                    eBooks
                   </a>
                 </li>
                 <li>
-                  <hr className="dropdown-divider" />
+                  <a className="dropdown-item" href="#">
+                    AudioBooks
+                  </a>
                 </li>
                 <li>
                   <a className="dropdown-item" href="#">
-                    Something else here
+                    Teens & YA
+                  </a>
+                </li>
+                <li>
+                  <a className="dropdown-item" href="#">
+                    Kids
+                  </a>
+                </li>
+                <li>
+                  <a className="dropdown-item" href="#">
+                    Music & Movies
                   </a>
                 </li>
               </ul>

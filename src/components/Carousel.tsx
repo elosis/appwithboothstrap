@@ -29,36 +29,24 @@ const Carousel = () => {
       <div className="carousel-inner">
         <div className="carousel-item active" data-bs-interval="10000">
           <img
-            src="https://images.pexels.com/photos/3952078/pexels-photo-3952078.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            className="d-block mini-photo mx-auto"
+            src="https://dispatch.barnesandnoble.com/content/dam/ccr/homepage/daily/2023/12/29/28406_Quote_B2_Book-Club_Mercury_12-29.jpg"
+            className="d-block mini-photo mx-auto w-75"
             alt="..."
           />
-          <div className="carousel-caption d-none d-md-block text-white">
-            <h5>First slide label</h5>
-            <p>Some representative placeholder content for the first slide.</p>
-          </div>
         </div>
         <div className="carousel-item" data-bs-interval="2000">
           <img
-            src="https://images.pexels.com/photos/207662/pexels-photo-207662.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            className="d-block mini-photo mx-auto"
+            src="https://dispatch.barnesandnoble.com/content/dam/ccr/BNApp/PromoCarousel/2024/01/28430_Quote_A-2_Wild-and-Distance-Seas_01-02.jpg"
+            className="d-block mini-photo mx-auto w-75"
             alt="..."
           />
-          <div className="carousel-caption d-none d-md-block text-white">
-            <h5>Second slide label</h5>
-            <p>Some representative placeholder content for the second slide.</p>
-          </div>
         </div>
         <div className="carousel-item">
           <img
-            src="https://images.pexels.com/photos/1906437/pexels-photo-1906437.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            className="d-block mini-photo mx-auto"
+            src="https://dispatch.barnesandnoble.com/content/dam/ccr/homepage/daily/2024/01/09/28480_BB_D_Vday_01-09.jpg"
+            className="d-block mini-photo mx-auto w-75"
             alt="..."
           />
-          <div className="carousel-caption d-none d-md-block text-white">
-            <h5>Third slide label</h5>
-            <p>Some representative placeholder content for the third slide.</p>
-          </div>
         </div>
       </div>
       <button

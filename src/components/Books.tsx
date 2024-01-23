@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 const Books = () => {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const handleNextButtonClick = () => {
+    toggleDropdown();
+  };
+
   return (
     <div className="container mx-auto text-center mt-5">
       <h1>FIND YOUR PLACE AT ONLINE BOOKSTORE</h1>
@@ -15,7 +25,11 @@ const Books = () => {
         id="carouselExampleDark"
         className="carousel carousel-dark slide mt-5"
       >
-        <div className="carousel-inner d-flex flex-row justify-content-center gap-4">
+        <div
+          className={` carousel-inner d-flex flex-row justify-content-center gap-4 ${
+            isDropdownOpen ? "dropdown-open" : ""
+          }`}
+        >
           <div className="d-flex flex-column">
             <i className="bi bi-bookshelf custom-icon" />
             <span>BOOKSHELF</span>
@@ -48,6 +62,26 @@ const Books = () => {
             <i className="bi bi-gift-fill custom-icon"></i>
             <span>GIFT CARDS</span>
           </div>
+          {isDropdownOpen && (
+            <div className="dropdown-menu">
+              <div className="d-flex flex-column">
+                <i className="bi bi-search custom-icon" />
+                <span>MYSTERY & CRIME</span>
+              </div>
+              <div className="d-flex flex-column">
+                <i className="bi bi-rocket-takeoff-fill custom-icon" />
+                <span>SCI-FI & FANTASY</span>
+              </div>
+              <div className="d-flex flex-column">
+                <i className="bi bi-backpack-fill custom-icon" />
+                <span>TEENS & YA</span>
+              </div>
+              <div className="d-flex flex-column">
+                <i className="bi bi-music-note-beamed custom-icon" />
+                <span>MUSIC & MOVIES</span>
+              </div>
+            </div>
+          )}
         </div>
         <button
           className="carousel-control-prev"
@@ -66,6 +100,7 @@ const Books = () => {
           type="button"
           data-bs-target="#carouselExampleDark"
           data-bs-slide="next"
+          onClick={handleNextButtonClick}
         >
           <span
             className="carousel-control-next-icon"
