@@ -48,3 +48,13 @@
   border-left: 20px solid #333; /* Adjust the color as needed */
   margin-right: 5px;
 }
+
+.dropdown-open {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.dropdown-closed {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}

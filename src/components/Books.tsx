@@ -1,16 +1,39 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 const Books = () => {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const icons = [
+    { icon: "bi-bookshelf", text: "BOOKSHELF" },
+    { icon: "bi-person-square", text: "MEMBERSHIP" },
+    { icon: "bi-wallet", text: "BESTSELLERS" },
+    { icon: "bi-book", text: "NEW RELEASES" },
+    { icon: "bi-pencil", text: "SIGNED EDITIONS" },
+    { icon: "bi-optical-audio", text: "AUDIOBOOKS" },
+    { icon: "bi-scissors", text: "COUPONS & DEALS" },
+    { icon: "bi-gift", text: "GIFT CARDS" },
+    { icon: "bi-search", text: "MYSTERY & CRIME" },
+    { icon: "bi-rocket", text: "SCI-FI & FANTASY" },
+    { icon: "bi-backpack", text: "TEENS & YA" },
+    { icon: "bi-music-note-beamed", text: "MUSIC & MOVIES" },
+  ];
 
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
-  };
+  const [visibleIconIndex, setVisibleIconIndex] = useState(0);
 
   const handleNextButtonClick = () => {
-    toggleDropdown();
+    if (visibleIconIndex < icons.length - 1) {
+      setVisibleIconIndex(visibleIconIndex + 1);
+    } else {
+      setVisibleIconIndex(0); // Loop back to the first icon
+    }
+  };
+
+  const handlePrevButtonClick = () => {
+    if (visibleIconIndex > 0) {
+      setVisibleIconIndex(visibleIconIndex - 1);
+    } else {
+      setVisibleIconIndex(icons.length - 1); // Go to the last icon when going back from the first icon
+    }
   };
 
   return (
@@ -22,69 +45,14 @@ const Books = () => {
         stores!
       </p>
       <div className="mt-5">
-        <div
-          className={`d-flex flex-row justify-content-center gap-4 ${
-            isDropdownOpen ? "dropdown-open" : ""
-          }`}
-        >
-          <div
-            className={`left-arrow-container ${isDropdownOpen ? "hidden" : ""}`}
-          >
+        <div className="d-flex flex-row justify-content-center gap-4">
+          <div className="left-arrow-container" onClick={handlePrevButtonClick}>
             <div className="left-arrow-head"></div>
           </div>
           <div className="d-flex flex-column">
-            <i className="bi bi-bookshelf custom-icon" />
-            <span>BOOKSHELF</span>
+            <i className={`bi ${icons[visibleIconIndex].icon} custom-icon`} />
+            <span>{icons[visibleIconIndex].text}</span>
           </div>
-          <div className="d-flex flex-column">
-            <i className="bi bi-person-square custom-icon" custom-icon></i>
-            <span>MEMBERSHIP</span>
-          </div>
-          <div className="d-flex flex-column">
-            <i className="bi bi-wallet-fill custom-icon"></i>
-            <span>BESTSELLERS</span>
-          </div>
-          <div className="d-flex flex-column">
-            <i className="bi bi-book custom-icon"></i>
-            <span>NEW RELEASES</span>
-          </div>
-          <div className="d-flex flex-column">
-            <i className="bi bi-pencil-square custom-icon"></i>
-            <span>SIGNED EDITIONS</span>
-          </div>
-          <div className="d-flex flex-column">
-            <i className="bi bi-optical-audio-fill custom-icon"></i>
-            <span>AUDIOBOOKS</span>
-          </div>
-          <div className="d-flex flex-column">
-            <i className="bi bi-scissors custom-icon"></i>
-            <span>COUPONS & DEALS</span>
-          </div>
-          <div className="d-flex flex-column">
-            <i className="bi bi-gift-fill custom-icon"></i>
-            <span>GIFT CARDS</span>
-          </div>
-          {isDropdownOpen && (
-            <div className="dropdown-menu">
-              <div className="d-flex flex-column">
-                <i className="bi bi-search custom-icon" />
-                <span>MYSTERY & CRIME</span>
-              </div>
-              <div className="d-flex flex-column">
-                <i className="bi bi-rocket-takeoff-fill custom-icon" />
-                <span>SCI-FI & FANTASY</span>
-              </div>
-              <div className="d-flex flex-column">
-                <i className="bi bi-backpack-fill custom-icon" />
-                <span>TEENS & YA</span>
-              </div>
-              <div className="d-flex flex-column">
-                <i className="bi bi-music-note-beamed custom-icon" />
-                <span>MUSIC & MOVIES</span>
-              </div>
-            </div>
-          )}
-
           <div
             className="right-arrow-container"
             onClick={handleNextButtonClick}
