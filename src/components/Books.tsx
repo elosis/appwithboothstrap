@@ -21,15 +21,17 @@ const Books = () => {
         audiobooks to download right now! Curbside pickup available in most
         stores!
       </p>
-      <div
-        id="carouselExampleDark"
-        className="carousel carousel-dark slide mt-5"
-      >
+      <div className="mt-5">
         <div
-          className={` carousel-inner d-flex flex-row justify-content-center gap-4 ${
+          className={`d-flex flex-row justify-content-center gap-4 ${
             isDropdownOpen ? "dropdown-open" : ""
           }`}
         >
+          <div
+            className={`left-arrow-container ${isDropdownOpen ? "hidden" : ""}`}
+          >
+            <div className="left-arrow-head"></div>
+          </div>
           <div className="d-flex flex-column">
             <i className="bi bi-bookshelf custom-icon" />
             <span>BOOKSHELF</span>
@@ -82,32 +84,14 @@ const Books = () => {
               </div>
             </div>
           )}
+
+          <div
+            className="right-arrow-container"
+            onClick={handleNextButtonClick}
+          >
+            <div className="right-arrow-head"></div>
+          </div>
         </div>
-        <button
-          className="carousel-control-prev"
-          type="button"
-          data-bs-target="#carouselExampleDark"
-          data-bs-slide="prev"
-        >
-          <span
-            className="carousel-control-prev-icon"
-            aria-hidden="true"
-          ></span>
-          <span className="visually-hidden">Previous</span>
-        </button>
-        <button
-          className="carousel-control-next"
-          type="button"
-          data-bs-target="#carouselExampleDark"
-          data-bs-slide="next"
-          onClick={handleNextButtonClick}
-        >
-          <span
-            className="carousel-control-next-icon"
-            aria-hidden="true"
-          ></span>
-          <span className="visually-hidden">Next</span>
-        </button>
       </div>
     </div>
   );

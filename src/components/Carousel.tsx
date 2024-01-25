@@ -12,18 +12,21 @@ const Carousel = () => {
           className="active"
           aria-current="true"
           aria-label="Slide 1"
+          style={{ opacity: "0" }}
         ></button>
         <button
           type="button"
           data-bs-target="#carouselExampleDark"
           data-bs-slide-to="1"
           aria-label="Slide 2"
+          style={{ opacity: "0" }}
         ></button>
         <button
           type="button"
           data-bs-target="#carouselExampleDark"
           data-bs-slide-to="2"
           aria-label="Slide 3"
+          style={{ opacity: "0" }}
         ></button>
       </div>
       <div className="carousel-inner">

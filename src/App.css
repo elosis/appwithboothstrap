@@ -18,3 +18,33 @@
 .end-footer-list {
   font-size: 10px;
 }
+
+.left-arrow-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.left-arrow-head {
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 20px solid #333; /* Adjust the color as needed */
+  margin-left: 5px;
+}
+
+.right-arrow-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.right-arrow-head {
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 20px solid #333; /* Adjust the color as needed */
+  margin-right: 5px;
+}
