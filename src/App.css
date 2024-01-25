@@ -49,12 +49,20 @@
   margin-right: 5px;
 }
 
-.dropdown-open {
+.icon-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   opacity: 1;
   transition: opacity 0.5s ease-in-out;
 }
 
-.dropdown-closed {
+.icon-container.hidden {
   opacity: 0;
-  transition: opacity 0.5s ease-in-out;
+  pointer-events: none;
+  transition: opacity 0.5s ease-in-out, pointer-events 0.5s;
+}
+
+.icon-container i {
+  order: -1; /* Move the icon to the top */
 }

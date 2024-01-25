@@ -18,22 +18,22 @@ const Books = () => {
     { icon: "bi-music-note-beamed", text: "MUSIC & MOVIES" },
   ];
 
-  const [visibleIconIndex, setVisibleIconIndex] = useState(0);
+  const [visibleIconIndexes, setVisibleIconIndexes] = useState([
+    0, 1, 2, 3, 4, 5, 6, 7,
+  ]);
 
   const handleNextButtonClick = () => {
-    if (visibleIconIndex < icons.length - 1) {
-      setVisibleIconIndex(visibleIconIndex + 1);
-    } else {
-      setVisibleIconIndex(0); // Loop back to the first icon
-    }
+    const nextIndexes = visibleIconIndexes.map(
+      (index) => (index + 1) % icons.length
+    );
+    setVisibleIconIndexes(nextIndexes);
   };
 
   const handlePrevButtonClick = () => {
-    if (visibleIconIndex > 0) {
-      setVisibleIconIndex(visibleIconIndex - 1);
-    } else {
-      setVisibleIconIndex(icons.length - 1); // Go to the last icon when going back from the first icon
-    }
+    const prevIndexes = visibleIconIndexes.map(
+      (index) => (index - 1 + icons.length) % icons.length
+    );
+    setVisibleIconIndexes(prevIndexes);
   };
 
   return (
@@ -49,10 +49,17 @@ const Books = () => {
           <div className="left-arrow-container" onClick={handlePrevButtonClick}>
             <div className="left-arrow-head"></div>
           </div>
-          <div className="d-flex flex-column">
-            <i className={`bi ${icons[visibleIconIndex].icon} custom-icon`} />
-            <span>{icons[visibleIconIndex].text}</span>
-          </div>
+          {visibleIconIndexes.map((index) => (
+            <div
+              key={index}
+              className={`icon-container ${
+                visibleIconIndexes.length > 1 ? "transition" : ""
+              }`}
+            >
+              <i className={`bi ${icons[index].icon} custom-icon`} />
+              <span>{icons[index].text}</span>
+            </div>
+          ))}
           <div
             className="right-arrow-container"
             onClick={handleNextButtonClick}
