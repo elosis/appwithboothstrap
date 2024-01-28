@@ -7,6 +7,7 @@ import Books from "./components/Books";
 import Cards from "./components/Cards";
 import Knowledge from "./components/Knowledge";
 import Footer from "./components/Footer";
+import StoresEvents from "./pages/StoresEvents";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/" element={<Cards />} />
           <Route path="/" element={<Cards />} />
           <Route path="/" element={<Knowledge />} />
+          <Route path="/stores" element={<StoresEvents />} />
         </Routes>
         <Footer />
       </Router>

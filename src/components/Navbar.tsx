@@ -1,7 +1,10 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
@@ -21,12 +24,15 @@ const Navbar = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
+            <li
+              className="nav-item"
+              // onClick={() => navigate("")}
+            >
               <a className="nav-link active" aria-current="page" href="#">
                 Home
               </a>
             </li>
-            <li className="nav-item">
+            <li className="nav-item" onClick={() => navigate("stores")}>
               <a className="nav-link" href="#">
                 Stores & Events
               </a>
