@@ -8,7 +8,7 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">
+        <a className="navbar-brand" href="#" onClick={() => navigate("/")}>
           B&S
         </a>
         <button
@@ -24,10 +24,7 @@ const Navbar = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li
-              className="nav-item"
-              // onClick={() => navigate("")}
-            >
+            <li className="nav-item" onClick={() => navigate("/")}>
               <a className="nav-link active" aria-current="page" href="#">
                 Home
               </a>
