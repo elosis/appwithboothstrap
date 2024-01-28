@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar";
 import Carousel from "./components/Carousel";
 import Books from "./components/Books";
 import Cards from "./components/Cards";
-import Footer from "./components/Footer";
+import Knowledge from "./components/Knowledge";
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
       <Carousel />
       <Books />
       <Cards />
-      <Footer />
+      <Knowledge />
     </div>
   );
 }
