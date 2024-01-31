@@ -8,6 +8,7 @@ import Cards from "./components/Cards";
 import Knowledge from "./components/Knowledge";
 import Footer from "./components/Footer";
 import StoresEvents from "./pages/StoresEvents";
+import Fiction from "./pages/Fiction";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             }
           />
           <Route path="/stores" element={<StoresEvents />} />
+          <Route path="/fiction" element={<Fiction />} />
         </Routes>
         <Footer />
       </Router>
