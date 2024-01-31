@@ -66,3 +66,14 @@
 .icon-container i {
   order: -1; /* Move the icon to the top */
 }
+
+.word-line {
+  border-bottom: 1px solid #000;
+  line-height: 0.3px;
+  margin: 10px 0 20px;
+}
+
+.word-line span {
+  background: #fff;
+  padding: 0 10px;
+}
