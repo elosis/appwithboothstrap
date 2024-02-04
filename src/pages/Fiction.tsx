@@ -62,6 +62,7 @@ const Fiction = () => {
 
   const cardsPerPage = 3;
   const [visibleCardIndexes, setVisibleCardIndexes] = useState([0, 1, 2]);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const handleNextButtonClick = () => {
     const nextIndexes = visibleCardIndexes.map(
@@ -76,6 +77,18 @@ const Fiction = () => {
     );
     setVisibleCardIndexes(prevIndexes);
   };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <div className="mx-auto" style={{ maxWidth: "1436px" }}>
@@ -257,40 +270,46 @@ const Fiction = () => {
               humorous and deeply human narrative voice.
             </p>
           </div>
-          <div className="d-flex" style={{ paddingLeft: "15px" }}>
-            <div
-              className="left-arrow-container"
-              onClick={handlePrevButtonClick}
-            >
-              <div className="left-arrow-head"></div>
-            </div>
-            {visibleCardIndexes.map((index) => (
+          <div className="container">
+            <div className="d-flex" style={{ paddingLeft: "15px" }}>
               <div
-                key={index}
-                className={`card mx-2 position-relative`}
-                style={{ width: "18rem", border: "none" }}
+                className="left-arrow-container"
+                onClick={handlePrevButtonClick}
               >
-                <div className="card-content">
-                  <img
-                    src={fictionData[index].imageUrl}
-                    className="card-img-top w-50 mx-auto cards-img"
-                    alt="Book Cover"
-                  />
-                  <div className="card-body text-center">
-                    <div className="card-title">{fictionData[index].title}</div>
-                    <p className="card-text">
-                      by <strong>{fictionData[index].author}</strong>
-                    </p>
-                  </div>
-                  <button className="quick-add-button">QUICK ADD</button>
-                </div>
+                <div className="left-arrow-head"></div>
               </div>
-            ))}
-            <div
-              className="right-arrow-container"
-              onClick={handleNextButtonClick}
-            >
-              <div className="right-arrow-head"></div>
+              {visibleCardIndexes.map((index) => (
+                <div
+                  key={index}
+                  className={`card mx-2 position-relative`}
+                  style={{ width: "18rem", border: "none" }}
+                >
+                  <div className="card-content">
+                    <img
+                      src={fictionData[index].imageUrl}
+                      className="card-img-top w-50 mx-auto cards-img"
+                      alt="Book Cover"
+                    />
+                    <div className="card-body text-center">
+                      <div className="card-title">
+                        {fictionData[index].title}
+                      </div>
+                      <p className="card-text">
+                        by <strong>{fictionData[index].author}</strong>
+                      </p>
+                    </div>
+                    {windowWidth >= 1200 && (
+                      <button className="quick-add-button">QUICK ADD</button>
+                    )}
+                  </div>
+                </div>
+              ))}
+              <div
+                className="right-arrow-container"
+                onClick={handleNextButtonClick}
+              >
+                <div className="right-arrow-head"></div>
+              </div>
             </div>
           </div>
         </div>
