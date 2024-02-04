@@ -79,3 +79,27 @@
   font-weight: 500;
   font-size: 18px;
 }
+
+/* Add this to your CSS file or style tag */
+.card-content {
+  position: relative;
+}
+
+.quick-add-button {
+  position: absolute;
+  bottom: 87.7px; /* Adjust the distance from the bottom as needed */
+  left: 25%;
+  transform: translateY(100%);
+  background-color: white;
+  border: 2px solid darkblue;
+  color: darkgreen;
+  padding: 5px 28.2px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.card-content:hover .quick-add-button {
+  opacity: 1;
+  transform: translateY(0);
+}

@@ -11,7 +11,7 @@ const Fiction = () => {
       author: " Coco Mellors",
     },
     {
-      title: "This Other Eden (B&N Exclusive Edition) by",
+      title: "This Other Eden",
       imageUrl:
         "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781324079538_p0_v3%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
       author: " Paul Harding",
@@ -41,19 +41,19 @@ const Fiction = () => {
       author: " Kevin Wilson",
     },
     {
-      title: "  The Rabbit Hutch (BS Discover Prize Winner)",
+      title: "  The Rabbit Hutch",
       imageUrl:
         "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9780593467879_p0_v3%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
       author: " Tess Gunty",
     },
     {
-      title: "  The Second Ending (BS Exclusive Edition)",
+      title: "  The Second Ending",
       imageUrl:
         "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9780593724941_p0_v2%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
       author: " Michelle Hoffman",
     },
     {
-      title: "  Notes on Your Sudden Disappearanc: A Novel by",
+      title: "Notes on Disappearance",
       imageUrl:
         "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781250871442_p0_v12%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
       author: " Alison Espach",
@@ -247,7 +247,7 @@ const Fiction = () => {
         <div className="text-center mt-5 word-line">
           <span>Our Fiction Monthly Picks</span>
         </div>
-        <div className="d-flex">
+        <div className="d-flex mt-5">
           <div style={{ borderRight: "1px solid black", paddingRight: "15px" }}>
             <h5>This Month's Pick: Cleopatra and Frankenstein:</h5>
             <p className="mt-4">
@@ -267,19 +267,22 @@ const Fiction = () => {
             {visibleCardIndexes.map((index) => (
               <div
                 key={index}
-                className={`card mx-2`}
+                className={`card mx-2 position-relative`}
                 style={{ width: "18rem", border: "none" }}
               >
-                <img
-                  src={fictionData[index].imageUrl}
-                  className="card-img-top w-50 mx-auto cards-img"
-                  alt="Book Cover"
-                />
-                <div className="card-body text-center">
-                  <div className="card-title">{fictionData[index].title}</div>
-                  <p className="card-text">
-                    by <strong>{fictionData[index].author}</strong>
-                  </p>
+                <div className="card-content">
+                  <img
+                    src={fictionData[index].imageUrl}
+                    className="card-img-top w-50 mx-auto cards-img"
+                    alt="Book Cover"
+                  />
+                  <div className="card-body text-center">
+                    <div className="card-title">{fictionData[index].title}</div>
+                    <p className="card-text">
+                      by <strong>{fictionData[index].author}</strong>
+                    </p>
+                  </div>
+                  <button className="quick-add-button">QUICK ADD</button>
                 </div>
               </div>
             ))}
