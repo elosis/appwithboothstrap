@@ -61,16 +61,6 @@ const Navbar = () => {
                 </li>
                 <li>
                   <a className="dropdown-item" href="#">
-                    AudioBooks
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Teens & YA
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
                     Kids
                   </a>
                 </li>

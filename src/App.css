@@ -115,13 +115,13 @@
 
 .quick-add-button-select {
   position: absolute;
-  bottom: 11.7px; /* Adjust the distance from the bottom as needed */
-  left: 0%;
+  bottom: 141.35px; /* Adjust the distance from the bottom as needed */
+  right: 25%;
   transform: translateY(100%);
   background-color: white;
   border: 2px solid darkblue;
   color: darkgreen;
-  padding: 5px 24.5px;
+  padding: 5px 28.3px;
   cursor: pointer;
   opacity: 0;
   transition: opacity 0.3s, transform 0.3s;
