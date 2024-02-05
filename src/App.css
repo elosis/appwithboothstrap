@@ -99,7 +99,45 @@
   transition: opacity 0.3s, transform 0.3s;
 }
 
+.quick-add-button-winner {
+  position: absolute;
+  bottom: 11.7px; /* Adjust the distance from the bottom as needed */
+  left: 0%;
+  transform: translateY(100%);
+  background-color: white;
+  border: 2px solid darkblue;
+  color: darkgreen;
+  padding: 5px 24.5px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.quick-add-button-select {
+  position: absolute;
+  bottom: 11.7px; /* Adjust the distance from the bottom as needed */
+  left: 0%;
+  transform: translateY(100%);
+  background-color: white;
+  border: 2px solid darkblue;
+  color: darkgreen;
+  padding: 5px 24.5px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
 .card-content:hover .quick-add-button {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card-content:hover .quick-add-button-winner {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card-content:hover .quick-add-button-select {
   opacity: 1;
   transform: translateY(0);
 }

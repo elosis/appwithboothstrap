@@ -218,13 +218,19 @@ const Fiction = () => {
           <span>Have You Read Our Book of the Year Winner?</span>
         </div>
         <div className="card mb-3 p-2 border-0">
-          <div className="row g-0 justify-content-center mt-5">
-            <div className="col-md-4" style={{ width: "150px" }}>
+          <div className="row g-0 justify-content-center mt-5 position-relative">
+            <div
+              className="col-md-4 card-content"
+              style={{ width: "137.16px" }}
+            >
               <img
                 src="https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9780593422946_p0_v9%5D&call=url%5Bfile:common/decodeProduct.chain%5D"
                 className="img-fluid rounded w-100"
                 alt="..."
               />
+              {windowWidth >= 1200 && (
+                <button className="quick-add-button-winner">QUICK ADD</button>
+              )}
             </div>
             <div className="col-md-8" style={{ width: "500px" }}>
               <div className="card-body footer-list">
