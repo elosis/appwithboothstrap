@@ -33,8 +33,8 @@ const Ebooks = () => {
       <div className="text-center mt-5 word-line">
         <span> The New NOOK 9” Lenovo Tablet</span>
       </div>
-      <div className="d-flex flex-row card mb-3 p-2 border-0">
-        <div className="row g-0 justify-content-center mt-5 position-relative">
+      <div className="row d-flex flex-row card mb-3 p-2 border-0">
+        <div className="col-8 row g-0 justify-content-center mt-5 position-relative">
           <div className="col-8 card-content" style={{ width: "160px" }}>
             <img
               src="https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9780594261353_p0_v1%5D&call=url%5Bfile:common/decodeProduct.chain%5D"
@@ -72,7 +72,7 @@ const Ebooks = () => {
           </div>
         </div>
         <div
-          className="d-flex flex-column justify-content-center"
+          className="col-4 d-flex flex-column justify-content-center"
           style={{ borderLeft: "1px solid black", padding: "32px" }}
         >
           <span>
