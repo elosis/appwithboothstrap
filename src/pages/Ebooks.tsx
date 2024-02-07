@@ -4,9 +4,65 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 const Ebooks = () => {
+  const ebooksData = [
+    {
+      title: "The Puppets of Spelhorst by ",
+      imageUrl:
+        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781639730704_p0_v5%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
+      stars: 4,
+      author: " Kate DiCamillo",
+      buttonText: "Buy",
+    },
+    {
+      title: "The Puppets of Spelhorst by ",
+      imageUrl:
+        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781639730704_p0_v5%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
+      stars: 4,
+      author: " Kate DiCamillo",
+      buttonText: "Buy",
+    },
+    {
+      title: "The Puppets of Spelhorst by ",
+      imageUrl:
+        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781639730704_p0_v5%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
+      stars: 4,
+      author: " Kate DiCamillo",
+      buttonText: "Buy",
+    },
+    {
+      title: "The Puppets of Spelhorst by ",
+      imageUrl:
+        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781639730704_p0_v5%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
+      stars: 4,
+      author: " Kate DiCamillo",
+      buttonText: "Buy",
+    },
+    {
+      title: "The Puppets of Spelhorst by ",
+      imageUrl:
+        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781639730704_p0_v5%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
+      stars: 4,
+      author: " Kate DiCamillo",
+      buttonText: "Buy",
+    },
+  ];
   const navigate = useNavigate();
-
+  const [visibleCardIndexes, setVisibleCardIndexes] = useState([0, 1, 2, 3, 4]);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  const handleNextButtonClick = () => {
+    const nextIndexes = visibleCardIndexes.map(
+      (index) => (index + 1) % ebooksData.length
+    );
+    setVisibleCardIndexes(nextIndexes);
+  };
+
+  const handlePrevButtonClick = () => {
+    const prevIndexes = visibleCardIndexes.map(
+      (index) => (index - 1 + ebooksData.length) % ebooksData.length
+    );
+    setVisibleCardIndexes(prevIndexes);
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -79,6 +135,43 @@ const Ebooks = () => {
             <strong>NOOK</strong>
           </span>
           <h1>$149.99</h1>
+        </div>
+      </div>
+      <div className="container">
+        <div className="d-flex" style={{ paddingLeft: "15px" }}>
+          <div className="left-arrow-container" onClick={handlePrevButtonClick}>
+            <div className="left-arrow-head"></div>
+          </div>
+          {visibleCardIndexes.map((index) => (
+            <div
+              key={index}
+              className={`card mx-2 position-relative`}
+              style={{ width: "18rem", border: "none" }}
+            >
+              <div className="card-content">
+                <img
+                  src={ebooksData[index].imageUrl}
+                  className="card-img-top w-50 mx-auto cards-img"
+                  alt="Book Cover"
+                />
+                <div className="card-body text-center">
+                  <div className="card-title">{ebooksData[index].title}</div>
+                  <p className="card-text">
+                    by <strong>{ebooksData[index].author}</strong>
+                  </p>
+                </div>
+                {windowWidth >= 1200 && (
+                  <button className="quick-add-button">QUICK ADD</button>
+                )}
+              </div>
+            </div>
+          ))}
+          <div
+            className="right-arrow-container"
+            onClick={handleNextButtonClick}
+          >
+            <div className="right-arrow-head"></div>
+          </div>
         </div>
       </div>
     </div>
