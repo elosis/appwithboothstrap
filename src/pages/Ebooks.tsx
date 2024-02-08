@@ -98,7 +98,7 @@ const Ebooks = () => {
               alt="..."
             />
             {windowWidth >= 1200 && (
-              <button className="quick-add-button-winner">QUICK ADD</button>
+              <button className="quick-add-button-nook">QUICK ADD</button>
             )}
           </div>
           <div className="col-8" style={{ width: "500px" }}>
