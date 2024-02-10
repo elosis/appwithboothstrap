@@ -4,62 +4,104 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 const Ebooks = () => {
-  const ebooksData = [
+  const EbooksFinalistData = [
     {
-      title: "The Puppets of Spelhorst by ",
+      title: "The Puppets of Spelhorst",
       imageUrl:
-        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781639730704_p0_v5%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
-      stars: 4,
-      author: " Kate DiCamillo",
+        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781536234251_p0_v2%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
+      stars: 5,
+      author: "Kate DiCamillo",
       buttonText: "Buy",
     },
     {
-      title: "The Puppets of Spelhorst by ",
+      title: "The Wager:A Tale of Shipwreck",
       imageUrl:
-        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781639730704_p0_v5%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
+        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9780385534277_p0_v2%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
       stars: 4,
-      author: " Kate DiCamillo",
+      author: " David Grann",
       buttonText: "Buy",
     },
     {
-      title: "The Puppets of Spelhorst by ",
+      title: "The Story of Art Without Men",
       imageUrl:
-        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781639730704_p0_v5%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
+        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9780393881875_p0_v2%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
       stars: 4,
-      author: " Kate DiCamillo",
+      author: " Katy Hessel",
       buttonText: "Buy",
     },
     {
-      title: "The Puppets of Spelhorst by ",
+      title: "Yellowface: the Eyes from Earth",
       imageUrl:
-        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781639730704_p0_v5%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
+        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9780063250840_p0_v4%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
       stars: 4,
-      author: " Kate DiCamillo",
+      author: " R.F.Kuang",
       buttonText: "Buy",
     },
     {
-      title: "The Puppets of Spelhorst by ",
+      title: "The Berry Pickers: A Novel ",
       imageUrl:
-        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781639730704_p0_v5%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
+        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781646221967_p0_v2%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
       stars: 4,
-      author: " Kate DiCamillo",
+      author: " Amanda Peters",
+      buttonText: "Buy",
+    },
+    {
+      title: "An Ocean Apart: in Reel Life",
+      imageUrl:
+        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781529086829_p0_v1%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
+      stars: 2,
+      author: " Sarah Lee",
+      buttonText: "Buy",
+    },
+    {
+      title: "The Creative Act: A Way of Being",
+      imageUrl:
+        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9780593653425_p0_v2%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
+      stars: 4,
+      author: " Rick Rubin",
+      buttonText: "Buy",
+    },
+    {
+      title: "Let Us Descend (Oprah's Book)",
+      imageUrl:
+        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781982104511_p0_v4%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
+      stars: 4,
+      author: " Jesmyn Ward",
+      buttonText: "Buy",
+    },
+    {
+      title: "Fourth Wing with Birds",
+      imageUrl:
+        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781649374080_p0_v5%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
+      stars: 5,
+      author: " Rebecca Yarros",
+      buttonText: "Buy",
+    },
+    {
+      title: "The Christmas Postcards",
+      imageUrl:
+        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781529084269_p0_v3%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
+      stars: 3,
+      author: " Karen Swan",
       buttonText: "Buy",
     },
   ];
+
   const navigate = useNavigate();
   const [visibleCardIndexes, setVisibleCardIndexes] = useState([0, 1, 2, 3, 4]);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const handleNextButtonClick = () => {
     const nextIndexes = visibleCardIndexes.map(
-      (index) => (index + 1) % ebooksData.length
+      (index) => (index + 1) % EbooksFinalistData.length
     );
     setVisibleCardIndexes(nextIndexes);
   };
 
   const handlePrevButtonClick = () => {
     const prevIndexes = visibleCardIndexes.map(
-      (index) => (index - 1 + ebooksData.length) % ebooksData.length
+      (index) =>
+        (index - 1 + EbooksFinalistData.length) % EbooksFinalistData.length
     );
     setVisibleCardIndexes(prevIndexes);
   };
@@ -97,7 +139,7 @@ const Ebooks = () => {
               className="img-fluid rounded w-100"
               alt="..."
             />
-            {windowWidth >= 1200 && (
+            {windowWidth >= 1400 && (
               <button className="quick-add-button-nook">QUICK ADD</button>
             )}
           </div>
@@ -138,7 +180,10 @@ const Ebooks = () => {
         </div>
       </div>
       <div className="container">
-        <div className="d-flex" style={{ paddingLeft: "15px" }}>
+        <div className="text-center mt-5 word-line">
+          <span> 2023 Book of the Year Finalists</span>
+        </div>
+        <div className="d-flex mt-5" style={{ paddingLeft: "15px" }}>
           <div className="left-arrow-container" onClick={handlePrevButtonClick}>
             <div className="left-arrow-head"></div>
           </div>
@@ -150,18 +195,35 @@ const Ebooks = () => {
             >
               <div className="card-content">
                 <img
-                  src={ebooksData[index].imageUrl}
+                  src={EbooksFinalistData[index].imageUrl}
                   className="card-img-top w-50 mx-auto cards-img"
                   alt="Book Cover"
                 />
-                <div className="card-body text-center">
-                  <div className="card-title">{ebooksData[index].title}</div>
-                  <p className="card-text">
-                    by <strong>{ebooksData[index].author}</strong>
-                  </p>
+                <div
+                  className="card-body text-center w-50"
+                  style={{ fontSize: "12px" }}
+                >
+                  <div className="card-title">
+                    {EbooksFinalistData[index].title} by{" "}
+                    <strong>{EbooksFinalistData[index].author}</strong>
+                  </div>
+
+                  <div className="d-flex gap-1 justify-content-center">
+                    {Array.from({
+                      length: EbooksFinalistData[index].stars,
+                    }).map((_, starIndex) => (
+                      <i
+                        key={starIndex}
+                        className="bi bi-star-fill"
+                        style={{ color: "gold" }}
+                      ></i>
+                    ))}
+                  </div>
                 </div>
-                {windowWidth >= 1200 && (
-                  <button className="quick-add-button">QUICK ADD</button>
+                {windowWidth >= 1400 && (
+                  <button className="quick-add-button-finalist">
+                    QUICK ADD
+                  </button>
                 )}
               </div>
             </div>
