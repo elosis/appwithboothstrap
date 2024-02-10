@@ -109,7 +109,18 @@ const Ebooks = () => {
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
+      if (window.innerWidth < 463) {
+        setVisibleCardIndexes([0]);
+      } else if (window.innerWidth < 768) {
+        setVisibleCardIndexes(visibleCardIndexes.slice(0, 2));
+      } else if (window.innerWidth < 1200) {
+        setVisibleCardIndexes(visibleCardIndexes.slice(0, 3));
+      } else {
+        setVisibleCardIndexes([0, 1, 2, 3, 4]);
+      }
     };
+
+    handleResize();
 
     window.addEventListener("resize", handleResize);
 
