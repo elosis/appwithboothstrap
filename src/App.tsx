@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import StoresEvents from "./pages/StoresEvents";
 import Fiction from "./pages/Fiction";
 import Ebooks from "./pages/Ebooks";
+import Kids from "./pages/Kids";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route path="/stores" element={<StoresEvents />} />
           <Route path="/fiction" element={<Fiction />} />
           <Route path="/ebooks" element={<Ebooks />} />
+          <Route path="/kids" element={<Kids />} />
         </Routes>
         <Footer />
       </Router>

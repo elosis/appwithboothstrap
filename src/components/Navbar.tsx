@@ -64,7 +64,11 @@ const Navbar = () => {
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <a
+                    className="dropdown-item"
+                    href="#"
+                    onClick={() => navigate("kids")}
+                  >
                     Kids
                   </a>
                 </li>

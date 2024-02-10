@@ -80,6 +80,18 @@
   font-size: 18px;
 }
 
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Three columns */
+  gap: 10px; /* Gap between images */
+}
+
+.image-text {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+}
+
 /* Add this to your CSS file or style tag */
 .card-content {
   position: relative;
@@ -143,13 +155,13 @@
 
 .quick-add-button-finalist {
   position: absolute;
-  bottom: 164.7px; /* Adjust the distance from the bottom as needed */
+  bottom: 128.7px; /* Adjust the distance from the bottom as needed */
   left: 0%;
   transform: translateY(100%);
   background-color: white;
   border: 2px solid darkblue;
   color: darkgreen;
-  padding: 5px 23.4px;
+  padding: 5px 8.9px;
   cursor: pointer;
   opacity: 0;
   transition: opacity 0.3s, transform 0.3s;
