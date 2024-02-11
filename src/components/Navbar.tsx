@@ -72,11 +72,6 @@ const Navbar = () => {
                     Kids
                   </a>
                 </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Music & Movies
-                  </a>
-                </li>
               </ul>
             </li>
           </ul>
