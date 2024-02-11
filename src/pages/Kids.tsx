@@ -1,11 +1,121 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 const Kids = () => {
-  const navigate = useNavigate();
+  const EbooksFinalistData = [
+    {
+      title: "The Wrath of the Triple Goddess",
+      imageUrl:
+        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781368112383_p0_v1%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
+      stars: 5,
+      author: "Rick Jordan",
+    },
+    {
+      title: "The Chalice of the Gods",
+      imageUrl:
+        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781368099370_p0_v2%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
+      stars: 4,
+      author: " Rick Riordan",
+    },
+    {
+      title: "The Battle of the Labyrinth",
+      imageUrl:
+        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781368051460_p0_v3%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
+      stars: 3,
+      author: " Rick Riordan",
+    },
+    {
+      title: "The Ligthning Thief (Percy Jackson)",
+      imageUrl:
+        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781368051477_p0_v3%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
+      stars: 5,
+      author: " Rick Riordan",
+    },
+    {
+      title: "Simon Sort of Says: Award Winner",
+      imageUrl:
+        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781368082853_p0_v4%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
+      stars: 4,
+      author: " Erin Bow",
+    },
+    {
+      title: "The Mona Lisa Vanishes",
+      imageUrl:
+        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9780593643846_p0_v1%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
+      stars: 4,
+      author: " Nicholas Day",
+    },
+    {
+      title: "Eagle Drums",
+      imageUrl:
+        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781250750655_p0_v7%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
+      stars: 5,
+      author: " Nasuğraq Eainey Hopson",
+    },
+    {
+      title: "Fox Has a Problem",
+      imageUrl:
+        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9780063277922_p0_v2%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
+      stars: 2,
+      author: " Corey R.Tabor",
+    },
+    {
+      title: "Alebrijes",
+      imageUrl:
+        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781646142637_p0_v1%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
+      stars: 3,
+      author: "Donna Barba Higuera",
+    },
+    {
+      title: "The Heroes of Olympus",
+      imageUrl:
+        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781368053099_p0_v2%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
+      stars: 3,
+      author: " Rick Riordan",
+    },
+  ];
+
+  const [visibleCardIndexes, setVisibleCardIndexes] = useState([0, 1, 2, 3, 4]);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  const handleNextButtonClick = () => {
+    const nextIndexes = visibleCardIndexes.map(
+      (index) => (index + 1) % EbooksFinalistData.length
+    );
+    setVisibleCardIndexes(nextIndexes);
+  };
+
+  const handlePrevButtonClick = () => {
+    const prevIndexes = visibleCardIndexes.map(
+      (index) =>
+        (index - 1 + EbooksFinalistData.length) % EbooksFinalistData.length
+    );
+    setVisibleCardIndexes(prevIndexes);
+  };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+      if (window.innerWidth < 463) {
+        setVisibleCardIndexes([0]);
+      } else if (window.innerWidth < 768) {
+        setVisibleCardIndexes(visibleCardIndexes.slice(0, 2));
+      } else if (window.innerWidth < 1200) {
+        setVisibleCardIndexes(visibleCardIndexes.slice(0, 3));
+      } else {
+        setVisibleCardIndexes([0, 1, 2, 3, 4]);
+      }
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <div className="mx-auto" style={{ maxWidth: "1436px" }}>
@@ -106,6 +216,124 @@ const Kids = () => {
             className="mb-5 w-50"
             style={{ marginTop: "2.5px" }}
           />
+        </div>
+      </div>
+      <div className="container">
+        <div className="text-center mt-5 word-line">
+          <span> Sweet Stories for Your Littlest Valentine</span>
+        </div>
+        <div className="d-flex mt-5" style={{ paddingLeft: "15px" }}>
+          <div
+            className="left-arrow-container"
+            onClick={handlePrevButtonClick}
+            style={{ marginRight: "100px" }}
+          >
+            <div className="left-arrow-head"></div>
+          </div>
+          {visibleCardIndexes.map((index) => (
+            <div
+              key={index}
+              className={`card mx-2 position-relative`}
+              style={{ width: "18rem", border: "none" }}
+            >
+              <div className="card-content">
+                <img
+                  src={EbooksFinalistData[index].imageUrl}
+                  className="card-img-top w-50 mx-auto cards-img"
+                  alt="Book Cover"
+                />
+                <div
+                  className="card-body text-center w-50"
+                  style={{ fontSize: "12px" }}
+                >
+                  <div className="card-title">
+                    {EbooksFinalistData[index].title} by{" "}
+                    <strong>{EbooksFinalistData[index].author}</strong>
+                  </div>
+
+                  <div className="d-flex gap-1 justify-content-center">
+                    {Array.from({
+                      length: EbooksFinalistData[index].stars,
+                    }).map((_, starIndex) => (
+                      <i
+                        key={starIndex}
+                        className="bi bi-star-fill"
+                        style={{ color: "gold" }}
+                      ></i>
+                    ))}
+                  </div>
+                </div>
+                {windowWidth >= 1400 && (
+                  <button className="quick-add-button-finalist">
+                    QUICK ADD
+                  </button>
+                )}
+              </div>
+            </div>
+          ))}
+          <div
+            className="right-arrow-container"
+            onClick={handleNextButtonClick}
+          >
+            <div className="right-arrow-head"></div>
+          </div>
+        </div>
+      </div>
+      <div className=" container text-center mt-5 word-line">
+        <span> BS Reads</span>
+      </div>
+      <div
+        className="d-flex justify-content-center mt-5"
+        style={{ gap: "50px" }}
+      >
+        <div className="card" style={{ width: "18rem" }}>
+          <img
+            src="https://www.barnesandnoble.com/blog/wp-content/uploads/2024/01/PROD-28613_FebMostAnticipatedKids_0122-1.jpg?w=340&h=195&crop=1"
+            className="card-img-top"
+            alt="..."
+          />
+          <div className="card-body text-center">
+            <p className="card-text">
+              Our Most Anticipated Kids’ Books February 2024
+            </p>
+            <div className="d-flex flex-row justify-content-center gap-2">
+              <i className="bi bi-book-half" style={{ color: "darkblue" }}></i>
+              <span style={{ color: "green" }}>Isabelle McConville</span>
+            </div>
+          </div>
+        </div>
+        <div className="card" style={{ width: "18rem" }}>
+          <img
+            src="https://www.barnesandnoble.com/blog/wp-content/uploads/2023/10/PROD-27732_MostAnticipated_Kids_Blog_1025.jpg?w=340&h=195&crop=1"
+            className="card-img-top"
+            alt="..."
+          />
+          <div className="card-body text-center">
+            <p className="card-text">
+              Our Most Anticipated Kids Books of November/December 2023
+            </p>
+            <div className="d-flex flex-row justify-content-center gap-2">
+              <i className="bi bi-book-half" style={{ color: "darkblue" }}></i>
+              <span style={{ color: "green" }}>Brittany Bunzey</span>
+            </div>
+          </div>
+        </div>
+        <div className="card" style={{ width: "18rem" }}>
+          <img
+            src="https://www.barnesandnoble.com/blog/wp-content/uploads/2023/10/PROD-27710_KateDiCamillo_GuestPost_Blog_1010_1488x852.jpg?w=340&h=195&crop=1"
+            className="card-img-top"
+            alt="..."
+          />
+          <div className="card-body text-center">
+            <p className="card-text">
+              Writing is About Paying Attention: An Exclusive Guest Post from
+              Kate DiCamillo, Author of The Puppets of Spelhorst
+            </p>
+            <div className="d-flex flex-row justify-content-center gap-2">
+              <i className="bi bi-book-half" style={{ color: "darkblue" }}></i>
+              <span style={{ color: "green" }}>Kate DiCamillo</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
