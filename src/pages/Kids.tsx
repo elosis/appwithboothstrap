@@ -56,6 +56,58 @@ const Kids = () => {
           </div>
         </div>
       </div>
+      <div className=" container text-center mt-5 word-line">
+        <span> Buy One, Get One 50% Off Kids' Books</span>
+      </div>
+      <div className="image-grid align-items-center text-center border-bottom">
+        <div className="border-end ">
+          <div className="mt-3 kid-text">
+            <div>Buy One, Get One 50% Off: Board</div>
+            <div>Books for Little Hands</div>
+          </div>
+          <img
+            src="https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9780694003617_p0_v3%5D&call=url%5Bfile:common/decodeProduct.chain%5D"
+            alt=" Buy One, Get One 50% Off: Board Books for Little Hands"
+            className="mb-5 w-75 "
+            style={{ marginTop: "34px" }}
+          />
+        </div>
+        <div className="border-end ">
+          <div className="mt-3 kid-text">
+            <div>Buy One, Get One 50% Off:</div>
+            <div>Picture Books</div>
+          </div>
+          <img
+            src="https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9780062467768_p0_v1%5D&call=url%5Bfile:common/decodeProduct.chain%5D"
+            alt=" Buy One, Get One 50% Off: Board Books for Little Hands"
+            className="mb-5 w-50"
+            style={{ marginTop: "42px" }}
+          />
+        </div>
+        <div className="border-end ">
+          <div className="mt-3 kid-text">
+            <div>Buy One, Get One 50% Off:</div>
+            <div>Books for Ages 6 - 8</div>
+          </div>
+          <img
+            src="https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781338741063_p0_v2%5D&call=url%5Bfile:common/decodeProduct.chain%5D"
+            alt=" Buy One, Get One 50% Off: Board Books for Little Hands"
+            className="mt-1 mb-5 w-50"
+          />
+        </div>
+        <div>
+          <div className="mt-3 kid-text">
+            <div>Buy One, Get One 50% Off:</div>
+            <div>Books for Ages 9 - 12</div>
+          </div>
+          <img
+            src="https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781338596700_p0_v4%5D&call=url%5Bfile:common/decodeProduct.chain%5D"
+            alt=" Buy One, Get One 50% Off: Board Books for Little Hands"
+            className="mb-5 w-50"
+            style={{ marginTop: "2.5px" }}
+          />
+        </div>
+      </div>
     </div>
   );
 };

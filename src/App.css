@@ -92,6 +92,10 @@
   font-size: 14px;
 }
 
+.kid-text {
+  font-weight: bold;
+}
+
 /* Add this to your CSS file or style tag */
 .card-content {
   position: relative;
