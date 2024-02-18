@@ -1,7 +1,10 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Carousel = () => {
+  const navigate = useNavigate();
+
   return (
     <div id="carouselExampleDark" className="carousel carousel-dark slide mt-5">
       <div className="carousel-indicators">
@@ -35,6 +38,7 @@ const Carousel = () => {
             src="https://dispatch.barnesandnoble.com/content/dam/ccr/homepage/daily/2023/12/29/28406_Quote_B2_Book-Club_Mercury_12-29.jpg"
             className="d-block mini-photo mx-auto w-75"
             alt="..."
+            onClick={() => navigate("mainheader")}
           />
         </div>
         <div className="carousel-item" data-bs-interval="2000">
