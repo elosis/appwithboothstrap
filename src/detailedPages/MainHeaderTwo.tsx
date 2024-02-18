@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
-const MainHeader = () => {
+const MainHeaderTwo = () => {
   const [showModal, setShowModal] = useState(false);
 
   const handleClose = () => setShowModal(false);
@@ -19,15 +19,11 @@ const MainHeader = () => {
         <div className="row g-0">
           <div className="col-md-4">
             <img
-              src="https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&source=url%5Bhttps://prodimage.images-bn.com/pimages/9780593802991_p0_v5_s600x595.jpg%5D&scale=options%5Blimit%5D,size%5B300x10000%5D&sink=format%5Bwebp%5D"
+              src="https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B600%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&source=url%5Bhttps://prodimage.images-bn.com/pimages/9781324064886_p0_v7_s600x595.jpg%5D&scale=options%5Blimit%5D,size%5B600x10000%5D&sink=format%5Bwebp%5D"
               className="img-fluid rounded-start"
               alt="..."
             />
             <div className="mt-4" style={{ color: "green" }}>
-              <div className="d-flex gap-2">
-                <i className="bi bi-check-circle"></i>
-                <p>BS Book Club</p>
-              </div>
               <div className="d-flex gap-2" style={{ marginTop: "-15px" }}>
                 <i className="bi bi-check-circle"></i>
                 <p>BS Exclusives</p>
@@ -36,28 +32,21 @@ const MainHeader = () => {
           </div>
           <div className="col-md-8">
             <div className="card-body">
-              <h4 className="card-title">
-                Good Material (BS Book Club Edition)
-              </h4>
+              <h4 className="card-title">Wild and Distant Seas: A Novel</h4>
               <div className="d-flex gap-5 mb-4">
                 <div className="d-flex gap-1">
                   <i className="bi bi-star-fill" style={{ color: "gold" }}></i>
                   <i className="bi bi-star-fill" style={{ color: "gold" }}></i>
                   <i className="bi bi-star-fill" style={{ color: "gold" }}></i>
                   <i className="bi bi-star-fill" style={{ color: "gold" }}></i>
-                  <i className="bi bi-star" style={{ color: "gold" }}></i>
+                  <i className="bi bi-star-fill" style={{ color: "gold" }}></i>
                 </div>
-                <div style={{ color: "darkgreen" }}>4.0</div>
+                <div style={{ color: "darkgreen" }}>4.8</div>
               </div>
               <div className="border-top">
                 <h6 className="h6 mt-1">Hardcover (BS Book Club Edition)</h6>
                 <div className="d-flex gap-3 flex-row align-items-end">
-                  <div style={{ fontSize: "32px" }}>$25.20</div>
-                  <div style={{ textDecorationLine: "line-through" }}>
-                    $28.00
-                  </div>
-                  <div>|</div>
-                  <div style={{ color: "red" }}>Save 10%</div>
+                  <div style={{ fontSize: "32px" }}>$27.99</div>
                 </div>
               </div>
               <div className="mt-3">
@@ -82,19 +71,35 @@ const MainHeader = () => {
                   {/* Form inputs for card information */}
                   <div className="form-group">
                     <label>First Name</label>
-                    <input type="text" className="form-control" />
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Joe"
+                    />
                   </div>
                   <div className="form-group">
                     <label>Surname</label>
-                    <input type="text" className="form-control" />
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Doe"
+                    />
                   </div>
                   <div className="form-group">
                     <label>Card Number</label>
-                    <input type="text" className="form-control" />
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="XXXX XXXX XXXX XXXX"
+                    />
                   </div>
                   <div className="form-group">
                     <label>CVV</label>
-                    <input type="text" className="form-control" />
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="XXX"
+                    />
                   </div>
 
                   {/* Add more inputs as needed */}
@@ -108,13 +113,6 @@ const MainHeader = () => {
                   </Button>
                 </Modal.Footer>
               </Modal>
-              <div className="border-top mt-3"></div>
-              <p className="text-center border border-dark-subtle mt-3 p-1">
-                Join us on Tuesday, March 5 at 3 PM ET when Dolly Alderton
-                discusses her new novel and our February Book Club selection
-                GOOD MATERIAL. Please register on Eventbrite to attend this
-                event. Click here to learn more.
-              </p>
             </div>
           </div>
         </div>
@@ -126,49 +124,50 @@ const MainHeader = () => {
           <div className="d-flex gap-5 ">
             <div>
               <p>
-                Witty, clever and biting, Good Material is an exploration of
-                friendship, love and the many forms a relationship can take.
-                Great for fans of Curtis Sittenfeld and Emily Henry.
+                Using Moby Dick as a starting point, Tara Karr Roberts crafts a
+                gorgeous, character-driven narrative that is part retelling and
+                part wholly original historical fiction. With a massive scope
+                and a sprinkle of magic, this is ideal for fans of The Essex
+                Serpent and Great Circle.
               </p>
               <p className="border-top mt-3">
                 <strong>
-                  This Barnes & Noble Book Club Edition has special embossing on
-                  the cover and a reading group guide.
+                  A gorgeous debut, laced through with magic, following four
+                  generations of women as they seek to chart their own futures.
                 </strong>
               </p>
               <p className="border-top mt-4">
-                <strong>
-                  From the New York Times best-selling author of Ghosts and
-                  Everything I Know About Love: a story of heartbreak and
-                  friendship and how to survive both
-                </strong>
+                Evangeline Hussey has made a home for herself on Nantucket,
+                though she knows she is still an outsider to the island’s small,
+                close-knit community, one that by 1849 has started to feel the
+                decline of a once-thriving whaling industry. Her husband, Hosea,
+                and the life they built together, was once all she needed—but
+                now Hosea is gone, lost at sea. Evangeline is only able to hold
+                on to his inn, and her
               </p>
-              <p className="mt-4">
-                Andy loves Jen. Jen loved Andy. And he can't work out why she
-                stopped.
-              </p>
-              <p className="mt-4">Now he is...</p>
             </div>
             <div>
-              <p>Without a home</p>
-              <p>Waiting for his stand-up career to take off</p>
               <p>
-                Wondering why everyone else around him seems to have grown up
-                while he wasn't looking
+                place on the island, by employing a curious gift to glimpse and
+                re-form the recent memories of those who would cast her out.
               </p>
               <p>
-                Set adrift on the sea of heartbreak, Andy clings to the idea of
-                solving the puzzle of his ruined relationship. Because if he can
-                find the answer to that, then maybe Jen can find her way back to
-                him. But Andy still has a lot to learn, not least his
-                ex-girlfriend's side of the story…
+                One night, an idealistic sailor appears on her doorstep asking
+                her to call him Ishmael. He seeks only a warm bed and a bowl of
+                chowder, and yet suddenly, unsettlingly, her careful illusion
+                begins to fracture. He soon sails away with Ahab to hunt an
+                infamous white whale, and Evangeline is left to forge a new life
+                from the pieces that remain.
               </p>
               <p>
-                In this sharply funny and exquisitely relatable story of
-                romantic disaster and friendship, Dolly Alderton offers up a
-                love story with two endings, demonstrating once again why she is
-                one of the most exciting writers today, and the true voice of a
-                generation.
+                Her choices ripple through generations, across continents, and
+                into the depths of the sea, in a narrative that follows
+                Evangeline and her descendants from mid-nineteenth century
+                Nantucket to Boston, Brazil, Florence, and Idaho. Moving,
+                beautifully written, and elegantly conceived, Wild and Distant
+                Seas takes Moby-Dick as its starting point, but Tara Karr
+                Roberts brings four remarkable women to life in a spellbinding
+                epic all her own.
               </p>
             </div>
           </div>
@@ -178,4 +177,4 @@ const MainHeader = () => {
   );
 };
 
-export default MainHeader;
+export default MainHeaderTwo;

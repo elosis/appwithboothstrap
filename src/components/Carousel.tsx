@@ -38,7 +38,7 @@ const Carousel = () => {
             src="https://dispatch.barnesandnoble.com/content/dam/ccr/homepage/daily/2023/12/29/28406_Quote_B2_Book-Club_Mercury_12-29.jpg"
             className="d-block mini-photo mx-auto w-75"
             alt="..."
-            onClick={() => navigate("mainheader")}
+            onClick={() => navigate("mainheaderone")}
           />
         </div>
         <div className="carousel-item" data-bs-interval="2000">
@@ -46,13 +46,15 @@ const Carousel = () => {
             src="https://dispatch.barnesandnoble.com/content/dam/ccr/BNApp/PromoCarousel/2024/01/28430_Quote_A-2_Wild-and-Distance-Seas_01-02.jpg"
             className="d-block mini-photo mx-auto w-75"
             alt="..."
+            onClick={() => navigate("mainheadertwo")}
           />
         </div>
         <div className="carousel-item">
           <img
-            src="https://dispatch.barnesandnoble.com/content/dam/ccr/homepage/daily/2024/01/09/28480_BB_D_Vday_01-09.jpg"
+            src="https://dispatch.barnesandnoble.com/content/dam/ccr/homepage/daily/2024/01/30/28604_Quote_B1_BookClub_Good-Material_01-30_b.jpg"
             className="d-block mini-photo mx-auto w-75"
             alt="..."
+            onClick={() => navigate("mainheaderthree")}
           />
         </div>
       </div>

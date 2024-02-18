@@ -11,7 +11,9 @@ import StoresEvents from "./pages/StoresEvents";
 import Fiction from "./pages/Fiction";
 import Ebooks from "./pages/Ebooks";
 import Kids from "./pages/Kids";
-import MainHeader from "./detailedPages/MainHeader";
+import MainHeaderOne from "./detailedPages/MainHeaderOne";
+import MainHeaderTwo from "./detailedPages/MainHeaderTwo";
+import MainHeaderThree from "./detailedPages/MainHeaderThree";
 
 function App() {
   return (
@@ -34,7 +36,9 @@ function App() {
           <Route path="/fiction" element={<Fiction />} />
           <Route path="/ebooks" element={<Ebooks />} />
           <Route path="/kids" element={<Kids />} />
-          <Route path="/mainheader" element={<MainHeader />} />
+          <Route path="/mainheaderone" element={<MainHeaderOne />} />
+          <Route path="/mainheadertwo" element={<MainHeaderTwo />} />
+          <Route path="/mainheaderthree" element={<MainHeaderThree />} />
         </Routes>
         <Footer />
       </Router>
