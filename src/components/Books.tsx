@@ -55,6 +55,7 @@ const Books = () => {
               className={`icon-container ${
                 visibleIconIndexes.length > 1 ? "transition" : ""
               }`}
+              style={{ width: "120px" }}
             >
               <i className={`bi ${icons[index].icon} custom-icon`} />
               <span>{icons[index].text}</span>
