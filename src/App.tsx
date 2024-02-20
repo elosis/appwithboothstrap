@@ -14,6 +14,8 @@ import Kids from "./pages/Kids";
 import MainHeaderOne from "./detailedPages/MainHeaderOne";
 import MainHeaderTwo from "./detailedPages/MainHeaderTwo";
 import MainHeaderThree from "./detailedPages/MainHeaderThree";
+import SlideBooksOne from "./detailedPages/SlideBooksOne";
+import SlideBooksTwo from "./detailedPages/SlideBooksTwo";
 
 function App() {
   return (
@@ -39,6 +41,8 @@ function App() {
           <Route path="/mainheaderone" element={<MainHeaderOne />} />
           <Route path="/mainheadertwo" element={<MainHeaderTwo />} />
           <Route path="/mainheaderthree" element={<MainHeaderThree />} />
+          <Route path="/slidebooksone" element={<SlideBooksOne />} />
+          <Route path="/slidebookstwo" element={<SlideBooksTwo />} />
         </Routes>
         <Footer />
       </Router>
