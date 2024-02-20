@@ -1,9 +1,54 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
+export interface CardsResponse {
+  id: number;
+  Title: string;
+  Star: number;
+  imageURL: string;
+}
+
 const Cards = () => {
-  return (
+  const [cards, setCards] = useState<CardsResponse[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  const loadingCards = () => {
+    setLoading(true);
+    const getData = async () => {
+      await axios
+        .get(
+          "https://bnorchtyjikvrlcfldnp.supabase.co/rest/v1/Cards?select=*",
+          {
+            headers: {
+              apikey:
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJub3JjaHR5amlrdnJsY2ZsZG5wIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDgyNzc4MjEsImV4cCI6MjAyMzg1MzgyMX0.7m_uH4BBZTxbYLOhezZiXghClgO6M4kyUtS2nGsfGTI",
+            },
+          }
+        )
+        .then((res) => {
+          setCards(res.data);
+          console.log(res);
+        })
+        .catch((err) => {
+          const error =
+            err.response && err.response.status === 404 ? "error" : "no error";
+          setError(error);
+        });
+    };
+    getData();
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    loadingCards();
+  }, []);
+
+  return loading ? (
+    <div>Loading...</div>
+  ) : (
     <div className="mt-5">
       <h2 className="h2 text-center">Build your library !</h2>
       <div className="mt-3 mx-auto d-flex gap-5" style={{ maxWidth: "1436px" }}>
@@ -35,175 +80,51 @@ const Cards = () => {
         </div>
         <div className="container text-center d-flex flex-column gap-4">
           <div className="row">
-            <div className="card " style={{ width: "18rem", border: "none" }}>
-              <img
-                src="https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9780316501453_p0_v3%5D&call=url%5Bfile:common/decodeProduct.chain%5D"
-                className="card-img-top w-50 mx-auto cards-img"
-                alt="..."
-              />
-              <div className="card-body">
-                <h5 className="card-title">An Education in Malice</h5>
-                <div className="d-flex gap-1 justify-content-center">
-                  <i className="bi bi-star-fill" style={{ color: "gold" }}></i>
-                  <i className="bi bi-star-fill" style={{ color: "gold" }}></i>
-                  <i className="bi bi-star-fill" style={{ color: "gold" }}></i>
-                  <i className="bi bi-star-fill" style={{ color: "gold" }}></i>
-                  <i className="bi bi-star" style={{ color: "gold" }}></i>
+            {cards?.map((data, i) => (
+              <div
+                className="card "
+                key={i}
+                style={{ width: "18rem", border: "none" }}
+              >
+                <img
+                  src={data?.imageURL}
+                  alt={data?.Title}
+                  className="card-img-top w-50 mx-auto cards-img"
+                />
+                <div
+                  className="card-body"
+                  style={{ padding: "12px 12px 0px 12px" }}
+                >
+                  <h5 className="card-title ">{data?.Title}</h5>
                 </div>
-                <a href="#" className="btn btn-primary mt-3">
-                  Buy
-                </a>
-              </div>
-            </div>
-            <div className="card " style={{ width: "18rem", border: "none" }}>
-              <img
-                src="https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9780778305224_p0_v2%5D&call=url%5Bfile:common/decodeProduct.chain%5D"
-                className="card-img-top w-50 mx-auto cards-img"
-                alt="..."
-              />
-              <div className="card-body">
-                <h5 className="card-title">Shards of Glass: A Novel</h5>
                 <div className="d-flex gap-1 justify-content-center">
-                  <i className="bi bi-star-fill" style={{ color: "gold" }}></i>
-                  <i className="bi bi-star-fill" style={{ color: "gold" }}></i>
-                  <i className="bi bi-star-fill" style={{ color: "gold" }}></i>
-                  <i className="bi bi-star" style={{ color: "gold" }}></i>
-                  <i className="bi bi-star" style={{ color: "gold" }}></i>
+                  {Array.from(
+                    { length: Math.floor(data?.Star) },
+                    (_, index) => (
+                      <i
+                        key={`full-${index}`}
+                        className="bi bi-star-fill"
+                        style={{ color: "gold" }}
+                      ></i>
+                    )
+                  )}
+                  {data?.Star % 1 !== 0 && (
+                    <i
+                      className="bi bi-star-half"
+                      style={{ color: "gold" }}
+                    ></i>
+                  )}
                 </div>
-
-                <a href="#" className="btn btn-primary mt-3">
-                  Buy
-                </a>
-              </div>
-            </div>
-            <div className="card " style={{ width: "18rem", border: "none" }}>
-              <img
-                src="https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9780316561488_p0_v2%5D&call=url%5Bfile:common/decodeProduct.chain%5D"
-                className="card-img-top w-50 mx-auto cards-img"
-                alt="..."
-              />
-              <div className="card-body">
-                <h5 className="card-title">The City of Stardust</h5>
-                <div className="d-flex gap-1 justify-content-center">
-                  <i className="bi bi-star-fill" style={{ color: "gold" }}></i>
-                  <i className="bi bi-star-fill" style={{ color: "gold" }}></i>
-                  <i className="bi bi-star-fill" style={{ color: "gold" }}></i>
-                  <i className="bi bi-star-fill" style={{ color: "gold" }}></i>
-                  <i className="bi bi-star" style={{ color: "gold" }}></i>
+                <div className="text-center">
+                  <a
+                    href="#"
+                    className="btn btn-primary mt-3 d-inline-block mb-4"
+                  >
+                    Buy
+                  </a>
                 </div>
-
-                <a href="#" className="btn btn-primary mt-3">
-                  Buy
-                </a>
               </div>
-            </div>
-            <div className="card " style={{ width: "18rem", border: "none" }}>
-              <img
-                src="https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781649374110_p0_v3%5D&call=url%5Bfile:common/decodeProduct.chain%5D"
-                className="card-img-top w-50 mx-auto cards-img"
-                alt="..."
-              />
-              <div className="card-body">
-                <h5 className="card-title">Sanctuary of the Shadow</h5>
-                <div className="d-flex gap-1 justify-content-center">
-                  <i className="bi bi-star-fill" style={{ color: "gold" }}></i>
-                  <i className="bi bi-star-fill" style={{ color: "gold" }}></i>
-                  <i className="bi bi-star-fill" style={{ color: "gold" }}></i>
-                  <i className="bi bi-star-half" style={{ color: "gold" }}></i>
-                  <i className="bi bi-star" style={{ color: "gold" }}></i>
-                </div>
-
-                <a href="#" className="btn btn-primary mt-3">
-                  Buy
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="row">
-            <div className="card " style={{ width: "18rem", border: "none" }}>
-              <img
-                src="https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781250908308_p0_v1%5D&call=url%5Bfile:common/decodeProduct.chain%5D"
-                className="card-img-top w-50 mx-auto cards-img"
-                alt="..."
-              />
-              <div className="card-body">
-                <h5 className="card-title">The Atlas Complex</h5>
-                <div className="d-flex gap-1 justify-content-center">
-                  <i className="bi bi-star-fill" style={{ color: "gold" }}></i>
-                  <i className="bi bi-star-fill" style={{ color: "gold" }}></i>
-                  <i className="bi bi-star" style={{ color: "gold" }}></i>
-                  <i className="bi bi-star" style={{ color: "gold" }}></i>
-                  <i className="bi bi-star" style={{ color: "gold" }}></i>
-                </div>
-
-                <a href="#" className="btn btn-primary mt-3">
-                  Buy
-                </a>
-              </div>
-            </div>
-            <div className="card " style={{ width: "18rem", border: "none" }}>
-              <img
-                src="https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781250855107_p0_v1%5D&call=url%5Bfile:common/decodeProduct.chain%5D"
-                className="card-img-top w-50 mx-auto cards-img"
-                alt="..."
-              />
-              <div className="card-body">
-                <h5 className="card-title">The Atlas Paradox</h5>
-                <div className="d-flex gap-1 justify-content-center">
-                  <i className="bi bi-star-fill" style={{ color: "gold" }}></i>
-                  <i className="bi bi-star-fill" style={{ color: "gold" }}></i>
-                  <i className="bi bi-star-fill" style={{ color: "gold" }}></i>
-                  <i className="bi bi-star-fill" style={{ color: "gold" }}></i>
-                  <i className="bi bi-star" style={{ color: "gold" }}></i>
-                </div>
-
-                <a href="#" className="btn btn-primary mt-3">
-                  Buy
-                </a>
-              </div>
-            </div>
-            <div className="card " style={{ width: "18rem", border: "none" }}>
-              <img
-                src="https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781250334008_p0_v1%5D&call=url%5Bfile:common/decodeProduct.chain%5D"
-                className="card-img-top w-50 mx-auto cards-img"
-                alt="..."
-              />
-              <div className="card-body">
-                <h5 className="card-title">Ninth House</h5>
-                <div className="d-flex gap-1 justify-content-center">
-                  <i className="bi bi-star-fill" style={{ color: "gold" }}></i>
-                  <i className="bi bi-star-fill" style={{ color: "gold" }}></i>
-                  <i className="bi bi-star-fill" style={{ color: "gold" }}></i>
-                  <i className="bi bi-star-fill" style={{ color: "gold" }}></i>
-                  <i className="bi bi-star-half" style={{ color: "gold" }}></i>
-                </div>
-
-                <a href="#" className="btn btn-primary mt-3">
-                  Buy
-                </a>
-              </div>
-            </div>
-            <div className="card " style={{ width: "18rem", border: "none" }}>
-              <img
-                src="https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781250333995_p0_v1%5D&call=url%5Bfile:common/decodeProduct.chain%5D"
-                className="card-img-top w-50 mx-auto cards-img"
-                alt="..."
-              />
-              <div className="card-body">
-                <h5 className="card-title">Hell Bent</h5>
-                <div className="d-flex gap-1 justify-content-center">
-                  <i className="bi bi-star-fill" style={{ color: "gold" }}></i>
-                  <i className="bi bi-star-fill" style={{ color: "gold" }}></i>
-                  <i className="bi bi-star-fill" style={{ color: "gold" }}></i>
-                  <i className="bi bi-star" style={{ color: "gold" }}></i>
-                  <i className="bi bi-star" style={{ color: "gold" }}></i>
-                </div>
-
-                <a href="#" className="btn btn-primary mt-3">
-                  Buy
-                </a>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
