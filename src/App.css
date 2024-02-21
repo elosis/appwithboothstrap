@@ -101,6 +101,17 @@
   position: relative;
 }
 
+.modal-backdrop {
+  transition: opacity 0.3s ease-in-out;
+  opacity: 0.2 !important; /* Adjust opacity as needed */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.5
+  ) !important; /* Adjust color and transparency as needed */
+}
+
 .quick-add-button {
   position: absolute;
   bottom: 87.7px; /* Adjust the distance from the bottom as needed */
