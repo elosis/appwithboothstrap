@@ -48,149 +48,46 @@ const Cards = () => {
     handleClose();
   };
 
-  const EbooksFinalistData = [
-    {
-      title: "The Puppets of Spelhorst",
-      imageUrl:
-        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781536234251_p0_v2%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
-      stars: 5,
-      author: "Kate DiCamillo",
-      buttonText: "Buy",
-    },
-    {
-      title: "The Wager:A Tale of Shipwreck",
-      imageUrl:
-        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9780385534277_p0_v2%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
-      stars: 4,
-      author: " David Grann",
-      buttonText: "Buy",
-    },
-    {
-      title: "The Story of Art Without Men",
-      imageUrl:
-        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9780393881875_p0_v2%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
-      stars: 4,
-      author: " Katy Hessel",
-      buttonText: "Buy",
-    },
-    {
-      title: "Yellowface: the Eyes from Earth",
-      imageUrl:
-        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9780063250840_p0_v4%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
-      stars: 4,
-      author: " R.F.Kuang",
-      buttonText: "Buy",
-    },
-    {
-      title: "The Berry Pickers ",
-      imageUrl:
-        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781646221967_p0_v2%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
-      stars: 4,
-      author: " Amanda Peters",
-      buttonText: "Buy",
-    },
-    {
-      title: "An Ocean Apart: in Reel Life",
-      imageUrl:
-        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781529086829_p0_v1%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
-      stars: 2,
-      author: " Sarah Lee",
-      buttonText: "Buy",
-    },
-    {
-      title: "The Creative Act: A Way of Being",
-      imageUrl:
-        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9780593653425_p0_v2%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
-      stars: 4,
-      author: " Rick Rubin",
-      buttonText: "Buy",
-    },
-    {
-      title: "Let Us Descend",
-      imageUrl:
-        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781982104511_p0_v4%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
-      stars: 4,
-      author: " Jesmyn Ward",
-      buttonText: "Buy",
-    },
-    {
-      title: "Fourth Wing with Birds",
-      imageUrl:
-        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781649374080_p0_v5%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
-      stars: 5,
-      author: " Rebecca Yarros",
-      buttonText: "Buy",
-    },
-    {
-      title: "The Christmas Postcards",
-      imageUrl:
-        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781529084269_p0_v3%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
-      stars: 3,
-      author: " Karen Swan",
-      buttonText: "Buy",
-    },
-  ];
-
-  const imageTrendingData = [
+  const EbooksHistoryData = [
     {
       imageUrl:
-        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781668003121_p0_v2%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
-      text: "Dirty Thirty",
+        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9780735224117_p0_v77%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
     },
     {
       imageUrl:
-        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9780593331354_p0_v1%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
-      text: "Three-Inch Teeth",
+        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9780063356979_p0_v2%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
     },
     {
       imageUrl:
-        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9780369719300_p0_v2%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
-      text: "The Summer Book Club",
+        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9780553393989_p0_v1%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
     },
     {
       imageUrl:
-        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/2940167280465_p0_v1%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
-      text: "The Ruthless King",
+        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9780143110637_p0_v1%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
     },
     {
       imageUrl:
-        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/2940179414742_p0_v1%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
-      text: "Highlander's Reward",
+        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9780316441094_p0_v2%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
     },
     {
       imageUrl:
-        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781250178657_p0_v3%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
-      text: "The Women",
+        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9780671447540_p0_v3%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
     },
     {
       imageUrl:
-        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9780593550410_p0_v3%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
-      text: "Bride",
+        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781250257673_p0_v1%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
     },
     {
       imageUrl:
-        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781250289704_p0_v3%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
-      text: "Mind Games",
+        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9780525575337_p0_v1%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
     },
     {
       imageUrl:
-        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9780593725818_p0_v2%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
-      text: "In Too Deep",
+        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9780063212916_p0_v5%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
     },
     {
       imageUrl:
-        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9780316458238_p0_v4%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
-      text: "Everybody Knows",
-    },
-    {
-      imageUrl:
-        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9780593098790_p0_v1%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
-      text: "Dane's Mark",
-    },
-    {
-      imageUrl:
-        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9780061753459_p0_v2%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
-      text: "Sad Cypress",
+        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9780671447540_p0_v3%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
     },
   ];
 
@@ -200,7 +97,7 @@ const Cards = () => {
 
   const handleNextButtonClick = () => {
     const nextIndexes = visibleCardIndexes.map(
-      (index) => (index + 1) % EbooksFinalistData.length
+      (index) => (index + 1) % EbooksHistoryData.length
     );
     setVisibleCardIndexes(nextIndexes);
   };
@@ -208,7 +105,7 @@ const Cards = () => {
   const handlePrevButtonClick = () => {
     const prevIndexes = visibleCardIndexes.map(
       (index) =>
-        (index - 1 + EbooksFinalistData.length) % EbooksFinalistData.length
+        (index - 1 + EbooksHistoryData.length) % EbooksHistoryData.length
     );
     setVisibleCardIndexes(prevIndexes);
   };
@@ -482,31 +379,14 @@ const Cards = () => {
             >
               <div className="card-content">
                 <img
-                  src={EbooksFinalistData[index].imageUrl}
+                  src={EbooksHistoryData[index].imageUrl}
                   className="card-img-top w-50 mx-auto cards-img"
                   alt="Book Cover"
                 />
                 <div
                   className="card-body text-center w-50"
                   style={{ fontSize: "12px" }}
-                >
-                  <div className="card-title">
-                    {EbooksFinalistData[index].title} by{" "}
-                    <strong>{EbooksFinalistData[index].author}</strong>
-                  </div>
-
-                  <div className="d-flex gap-1 justify-content-center">
-                    {Array.from({
-                      length: EbooksFinalistData[index].stars,
-                    }).map((_, starIndex) => (
-                      <i
-                        key={starIndex}
-                        className="bi bi-star-fill"
-                        style={{ color: "gold" }}
-                      ></i>
-                    ))}
-                  </div>
-                </div>
+                ></div>
                 {windowWidth >= 1400 && (
                   <button className="quick-add-button-cards">QUICK ADD</button>
                 )}

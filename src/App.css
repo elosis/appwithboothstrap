@@ -114,7 +114,7 @@
 
 .quick-add-button {
   position: absolute;
-  bottom: 87.7px; /* Adjust the distance from the bottom as needed */
+  bottom: 87.7px;
   left: 25%;
   transform: translateY(100%);
   background-color: white;
@@ -128,7 +128,7 @@
 
 .quick-add-button-winner {
   position: absolute;
-  bottom: 11.7px; /* Adjust the distance from the bottom as needed */
+  bottom: 11.7px;
   left: 0%;
   transform: translateY(100%);
   background-color: white;
@@ -184,7 +184,7 @@
 
 .quick-add-button-cards {
   position: absolute;
-  bottom: 111.7px; /* Adjust the distance from the bottom as needed */
+  bottom: 31.5px;
   left: 0%;
   transform: translateY(100%);
   background-color: white;
