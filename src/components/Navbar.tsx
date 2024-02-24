@@ -6,7 +6,7 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary">
+    <nav className="navbar navbar-expand-lg bg-body-tertiary mx-auto">
       <div className="container-fluid">
         <a className="navbar-brand" href="#" onClick={() => navigate("/")}>
           B&S

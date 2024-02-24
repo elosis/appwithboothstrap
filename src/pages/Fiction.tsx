@@ -157,7 +157,9 @@ const Fiction = () => {
               alt="..."
             />
             {windowWidth >= 1200 && (
-              <button className="quick-add-button-select">QUICK ADD</button>
+              <button className="quick-add-button-select" onClick={handleShow}>
+                QUICK ADD
+              </button>
             )}
             <div className="card-body text-center">
               <h5 className="card-title">None of This is True</h5>
@@ -183,7 +185,9 @@ const Fiction = () => {
               alt="..."
             />
             {windowWidth >= 1200 && (
-              <button className="quick-add-button-select">QUICK ADD</button>
+              <button className="quick-add-button-select" onClick={handleShow}>
+                QUICK ADD
+              </button>
             )}
             <div className="card-body text-center">
               <h5 className="card-title">The Wolfsong in Nature</h5>
@@ -209,7 +213,9 @@ const Fiction = () => {
               alt="..."
             />
             {windowWidth >= 1200 && (
-              <button className="quick-add-button-select">QUICK ADD</button>
+              <button className="quick-add-button-select" onClick={handleShow}>
+                QUICK ADD
+              </button>
             )}
             <div className="card-body text-center">
               <h5 className="card-title">Pineapple Street: A Novel</h5>
@@ -235,7 +241,9 @@ const Fiction = () => {
               alt="..."
             />
             {windowWidth >= 1200 && (
-              <button className="quick-add-button-select">QUICK ADD</button>
+              <button className="quick-add-button-select" onClick={handleShow}>
+                QUICK ADD
+              </button>
             )}
             <div className="card-body text-center">
               <h5 className="card-title">Soul of Ash and Blood</h5>
@@ -261,7 +269,9 @@ const Fiction = () => {
               alt="..."
             />
             {windowWidth >= 1200 && (
-              <button className="quick-add-button-select">QUICK ADD</button>
+              <button className="quick-add-button-select" onClick={handleShow}>
+                QUICK ADD
+              </button>
             )}
             <div className="card-body text-center">
               <h5 className="card-title">The Rachel Incident </h5>
@@ -354,7 +364,12 @@ const Fiction = () => {
                 alt="..."
               />
               {windowWidth >= 1200 && (
-                <button className="quick-add-button-winner">QUICK ADD</button>
+                <button
+                  className="quick-add-button-winner"
+                  onClick={handleShow}
+                >
+                  QUICK ADD
+                </button>
               )}
             </div>
             <div className="col-md-8" style={{ width: "500px" }}>
@@ -430,7 +445,9 @@ const Fiction = () => {
                       </p>
                     </div>
                     {windowWidth >= 1200 && (
-                      <button className="quick-add-button">QUICK ADD</button>
+                      <button className="quick-add-button" onClick={handleShow}>
+                        QUICK ADD
+                      </button>
                     )}
                   </div>
                 </div>

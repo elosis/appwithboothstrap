@@ -388,7 +388,12 @@ const Cards = () => {
                   style={{ fontSize: "12px" }}
                 ></div>
                 {windowWidth >= 1400 && (
-                  <button className="quick-add-button-cards">QUICK ADD</button>
+                  <button
+                    className="quick-add-button-cards"
+                    onClick={handleShow}
+                  >
+                    QUICK ADD
+                  </button>
                 )}
               </div>
             </div>

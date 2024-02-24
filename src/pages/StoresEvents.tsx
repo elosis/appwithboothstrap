@@ -23,7 +23,11 @@ const StoresEvents = () => {
         </p>
         <div style={{ width: "900px", maxWidth: "900px" }}>
           <LoadScript googleMapsApiKey="YOUR_GOOGLE_MAPS_API_KEY">
-            <GoogleMap mapContainerStyle={containerStyle} center={center}>
+            <GoogleMap
+              mapContainerStyle={containerStyle}
+              center={center}
+              zoom={10}
+            >
               <Marker position={center} />
             </GoogleMap>
           </LoadScript>
