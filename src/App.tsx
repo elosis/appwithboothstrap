@@ -16,37 +16,40 @@ import MainHeaderTwo from "./detailedPages/MainHeaderTwo";
 import MainHeaderThree from "./detailedPages/MainHeaderThree";
 import SlideBooksOne from "./detailedPages/SlideBooksOne";
 import SlideBooksTwo from "./detailedPages/SlideBooksTwo";
+import { BookStoreLayer } from "./store/context";
 
 function App() {
   return (
-    <div className="App">
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <div>
-                <Carousel />
-                <Books />
-                <Cards />
-                <Knowledge />
-              </div>
-            }
-          />
-          <Route path="/stores" element={<StoresEvents />} />
-          <Route path="/fiction" element={<Fiction />} />
-          <Route path="/ebooks" element={<Ebooks />} />
-          <Route path="/kids" element={<Kids />} />
-          <Route path="/mainheaderone" element={<MainHeaderOne />} />
-          <Route path="/mainheadertwo" element={<MainHeaderTwo />} />
-          <Route path="/mainheaderthree" element={<MainHeaderThree />} />
-          <Route path="/slidebooksone" element={<SlideBooksOne />} />
-          <Route path="/slidebookstwo" element={<SlideBooksTwo />} />
-        </Routes>
-        <Footer />
-      </Router>
-    </div>
+    <BookStoreLayer>
+      <div className="App">
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <div>
+                  <Carousel />
+                  <Books />
+                  <Cards />
+                  <Knowledge />
+                </div>
+              }
+            />
+            <Route path="/stores" element={<StoresEvents />} />
+            <Route path="/fiction" element={<Fiction />} />
+            <Route path="/ebooks" element={<Ebooks />} />
+            <Route path="/kids" element={<Kids />} />
+            <Route path="/mainheaderone" element={<MainHeaderOne />} />
+            <Route path="/mainheadertwo" element={<MainHeaderTwo />} />
+            <Route path="/mainheaderthree" element={<MainHeaderThree />} />
+            <Route path="/slidebooksone" element={<SlideBooksOne />} />
+            <Route path="/slidebookstwo" element={<SlideBooksTwo />} />
+          </Routes>
+          <Footer />
+        </Router>
+      </div>
+    </BookStoreLayer>
   );
 }
 

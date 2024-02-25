@@ -1,114 +1,68 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useEffect } from "react";
 import { Modal, Button } from "react-bootstrap";
+import { BookStoreLayer, BookStoreContext, useContext } from "../store/context";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { useNavigate } from "react-router-dom";
 
-export interface CardsResponse {
+interface CardsResponse {
   id: number;
   Title: string;
   Star: number;
   imageURL: string;
 }
 
-const Cards = () => {
-  const [cardNumber, setCardNumber] = useState("");
-  const [cvv, setCVV] = useState("");
-  const [showModal, setShowModal] = useState(false);
-  const handleClose = () => setShowModal(false);
-  const handleShow = () => setShowModal(true);
+interface EbooksHistoryItem {
+  imageUrl: string;
+}
 
-  const handleCardNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value.replace(/\D/g, "");
-    const formattedValue = value
-      .replace(/(\d{4})/g, "$1 ")
-      .trim()
-      .slice(0, 19);
+interface CardsProps {
+  index: number;
+  loading: boolean;
+  cards: CardsResponse[];
+  cvv: string;
+  windowWidth: number;
+  cardNumber: string;
+  showModal: boolean;
+  setWindowWidth: React.Dispatch<React.SetStateAction<number>>;
+  visibleCardIndexes: number[];
+  setVisibleCardIndexes: React.Dispatch<React.SetStateAction<number[]>>;
+  loadingCards: () => void;
+  handleCloseModal: () => void;
+  handleShow: () => void;
+  handleCardNumberChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleCVVChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handlePrevButtonClick: () => void;
+  handleNextButtonClick: () => void;
+  handleBuy: () => void;
+  EbooksHistoryData: EbooksHistoryItem[];
+}
 
-    setCardNumber(formattedValue);
-  };
-
-  const handleCVVChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value.replace(/\D/g, "");
-    const formattedValue = value.slice(0, 3);
-
-    setCVV(formattedValue);
-  };
-
-  const handleCloseModal = () => {
-    setCardNumber("");
-    setCVV("");
-    handleClose();
-  };
-
-  const handleBuy = () => {
-    setCardNumber("");
-    setCVV("");
-    handleClose();
-  };
-
-  const EbooksHistoryData = [
-    {
-      imageUrl:
-        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9780735224117_p0_v77%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
-    },
-    {
-      imageUrl:
-        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9780063356979_p0_v2%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
-    },
-    {
-      imageUrl:
-        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9780553393989_p0_v1%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
-    },
-    {
-      imageUrl:
-        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9780143110637_p0_v1%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
-    },
-    {
-      imageUrl:
-        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9780316441094_p0_v2%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
-    },
-    {
-      imageUrl:
-        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9780671447540_p0_v3%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
-    },
-    {
-      imageUrl:
-        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781250257673_p0_v1%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
-    },
-    {
-      imageUrl:
-        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9780525575337_p0_v1%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
-    },
-    {
-      imageUrl:
-        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9780063212916_p0_v5%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
-    },
-    {
-      imageUrl:
-        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9780671447540_p0_v3%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
-    },
-  ];
-
+const Cards: React.FC<CardsProps> = () => {
   const navigate = useNavigate();
-  const [visibleCardIndexes, setVisibleCardIndexes] = useState([0, 1, 2, 3, 4]);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-  const handleNextButtonClick = () => {
-    const nextIndexes = visibleCardIndexes.map(
-      (index) => (index + 1) % EbooksHistoryData.length
-    );
-    setVisibleCardIndexes(nextIndexes);
-  };
-
-  const handlePrevButtonClick = () => {
-    const prevIndexes = visibleCardIndexes.map(
-      (index) =>
-        (index - 1 + EbooksHistoryData.length) % EbooksHistoryData.length
-    );
-    setVisibleCardIndexes(prevIndexes);
-  };
+  const {
+    bookStoreData: {
+      loading,
+      cards,
+      cvv,
+      windowWidth,
+      cardNumber,
+      showModal,
+      setWindowWidth,
+      visibleCardIndexes,
+      setVisibleCardIndexes,
+    },
+    loadingCards,
+    handleCloseModal,
+    handleShow,
+    handleCardNumberChange,
+    handleCVVChange,
+    handlePrevButtonClick,
+    handleNextButtonClick,
+    handleBuy,
+    EbooksHistoryData,
+  } = useContext(BookStoreContext);
 
   useEffect(() => {
     const handleResize = () => {
@@ -132,36 +86,6 @@ const Cards = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
-  const [cards, setCards] = useState<CardsResponse[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
-
-  const loadingCards = () => {
-    setLoading(true);
-    const getData = async () => {
-      await axios
-        .get(
-          "https://bnorchtyjikvrlcfldnp.supabase.co/rest/v1/Cards?select=*",
-          {
-            headers: {
-              apikey:
-                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJub3JjaHR5amlrdnJsY2ZsZG5wIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDgyNzc4MjEsImV4cCI6MjAyMzg1MzgyMX0.7m_uH4BBZTxbYLOhezZiXghClgO6M4kyUtS2nGsfGTI",
-            },
-          }
-        )
-        .then((res) => {
-          setCards(res.data);
-        })
-        .catch((err) => {
-          const error =
-            err.response && err.response.status === 404 ? "error" : "no error";
-          setError(error);
-        });
-    };
-    getData();
-    setLoading(false);
-  };
 
   useEffect(() => {
     loadingCards();
