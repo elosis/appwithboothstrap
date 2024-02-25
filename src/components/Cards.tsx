@@ -152,7 +152,6 @@ const Cards = () => {
         )
         .then((res) => {
           setCards(res.data);
-          console.log(res);
         })
         .catch((err) => {
           const error =

@@ -1,9 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const Navbar = () => {
+const Navbar = ({ books }) => {
   const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredBooks, setFilteredBooks] = useState([]);
+
+  const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const query = e.target.value;
+    setSearchQuery(query);
+    const filtered = books.filter((book) =>
+      book.Title.toLowerCase().includes(query.toLowerCase())
+    );
+    setFilteredBooks(filtered);
+  };
+
+  const handleBookClick = (bookId) => {
+    const selectedBook = books.find((book) => book.id === bookId);
+    if (selectedBook) {
+      navigate(`/detailedPages/${selectedBook.category}/${bookId}`);
+    }
+    setSearchQuery("");
+    setFilteredBooks([]);
+  };
 
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary mx-auto">
@@ -81,7 +101,22 @@ const Navbar = () => {
               type="search"
               placeholder="Search"
               aria-label="Search"
+              value={searchQuery}
+              onChange={handleSearchInputChange}
             />
+            {searchQuery && (
+              <div className="dropdown-menu show">
+                {filteredBooks.map((book) => (
+                  <button
+                    key={book.id}
+                    className="dropdown-item"
+                    onClick={() => handleBookClick(book.id)}
+                  >
+                    {book.title}
+                  </button>
+                ))}
+              </div>
+            )}
             <button className="btn btn-outline-success" type="submit">
               Search
             </button>
