@@ -104,7 +104,7 @@ const SearchedBook = () => {
                           ></i>
                         )
                       )}
-                      {data?.Star % 1 !== 0 && (
+                      {data?.star % 1 !== 0 && (
                         <i
                           className="bi bi-star-half"
                           style={{ color: "gold" }}
