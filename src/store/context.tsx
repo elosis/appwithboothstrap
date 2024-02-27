@@ -1,4 +1,4 @@
-import { ReactHTMLElement, createContext, useContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import axios from "axios";
@@ -26,13 +26,11 @@ export interface BooksResponse {
   type: string;
 }
 
-interface EbooksHistoryItem {
+export interface EbooksHistoryItem {
   imageUrl: string;
 }
 
-interface BookStoreData {
-  books: BooksResponse[];
-  setBooks: React.Dispatch<React.SetStateAction<BooksResponse[]>>;
+export interface BookStoreData {
   cards: CardsResponse[];
   setCards: React.Dispatch<React.SetStateAction<CardsResponse[]>>;
   loading: boolean;
@@ -49,6 +47,12 @@ interface BookStoreData {
   setVisibleCardIndexes: React.Dispatch<React.SetStateAction<number[]>>;
   windowWidth: number;
   setWindowWidth: React.Dispatch<React.SetStateAction<number>>;
+  filteredBooks: BooksResponse[];
+  setFilteredBooks: React.Dispatch<React.SetStateAction<BooksResponse[]>>;
+  searchQuery: string;
+  setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
+  books: BooksResponse[];
+  setBooks: React.Dispatch<React.SetStateAction<BooksResponse[]>>;
 }
 
 export interface ContextValue {
@@ -66,6 +70,10 @@ export interface ContextValue {
 }
 
 const defaultValue: BookStoreData = {
+  searchQuery: "",
+  setSearchQuery: () => {},
+  filteredBooks: [],
+  setFilteredBooks: () => {},
   books: [],
   setBooks: () => {},
   cards: [],
@@ -110,6 +118,8 @@ const BookStoreLayer = (props: React.PropsWithChildren<{}>) => {
   const [showModal, setShowModal] = useState(false);
   const [visibleCardIndexes, setVisibleCardIndexes] = useState([0, 1, 2, 3, 4]);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredBooks, setFilteredBooks] = useState<BooksResponse[]>([]);
 
   const handleClose = () => setShowModal(false);
 
@@ -229,6 +239,10 @@ const BookStoreLayer = (props: React.PropsWithChildren<{}>) => {
   ];
 
   const bookStoreData: BookStoreData = {
+    searchQuery,
+    setSearchQuery,
+    filteredBooks,
+    setFilteredBooks,
     books,
     setBooks,
     cards,

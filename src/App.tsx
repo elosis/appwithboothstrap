@@ -23,12 +23,12 @@ function App() {
     <BookStoreLayer>
       <div className="App">
         <Router>
-          <Navbar />
           <Routes>
             <Route
               path="/"
               element={
                 <div>
+                  <Navbar />
                   <Carousel />
                   <Books />
                   <Cards />

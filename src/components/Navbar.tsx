@@ -15,36 +15,19 @@ interface EbooksHistoryItem {
   imageUrl: string;
 }
 
-interface NavBarProps {
-  index: number;
-  loading: boolean;
-  cards: NavBarResponse[];
-  cvv: string;
-  windowWidth: number;
-  cardNumber: string;
-  showModal: boolean;
-  setWindowWidth: React.Dispatch<React.SetStateAction<number>>;
-  visibleCardIndexes: number[];
-  setVisibleCardIndexes: React.Dispatch<React.SetStateAction<number[]>>;
-  loadingCards: () => void;
-  handleCloseModal: () => void;
-  handleShow: () => void;
-  handleCardNumberChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  handleCVVChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  handlePrevButtonClick: () => void;
-  handleNextButtonClick: () => void;
-  handleBuy: () => void;
-  EbooksHistoryData: EbooksHistoryItem[];
-}
+interface NavBarProps {}
 
 const Navbar: React.FC<NavBarProps> = () => {
   const navigate = useNavigate();
   const {
-    bookStoreData: { books },
+    bookStoreData: {
+      books,
+      setSearchQuery,
+      filteredBooks,
+      setFilteredBooks,
+      searchQuery,
+    },
   } = useContext(BookStoreContext);
-
-  const [searchQuery, setSearchQuery] = useState("");
-  const [filteredBooks, setFilteredBooks] = useState([]);
 
   const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const query = e.target.value;
@@ -58,7 +41,7 @@ const Navbar: React.FC<NavBarProps> = () => {
   const handleBookClick = (bookId: number) => {
     const selectedBook = books.find((book) => book.id === bookId);
     if (selectedBook) {
-      navigate(`/detailedPages/${selectedBook.category}/${bookId}`);
+      navigate(`/detailedPages/${selectedBook.type}/${bookId}`);
     }
     setSearchQuery("");
     setFilteredBooks([]);

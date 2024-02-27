@@ -16,27 +16,7 @@ interface EbooksHistoryItem {
   imageUrl: string;
 }
 
-interface CardsProps {
-  index: number;
-  loading: boolean;
-  cards: CardsResponse[];
-  cvv: string;
-  windowWidth: number;
-  cardNumber: string;
-  showModal: boolean;
-  setWindowWidth: React.Dispatch<React.SetStateAction<number>>;
-  visibleCardIndexes: number[];
-  setVisibleCardIndexes: React.Dispatch<React.SetStateAction<number[]>>;
-  loadingCards: () => void;
-  handleCloseModal: () => void;
-  handleShow: () => void;
-  handleCardNumberChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  handleCVVChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  handlePrevButtonClick: () => void;
-  handleNextButtonClick: () => void;
-  handleBuy: () => void;
-  EbooksHistoryData: EbooksHistoryItem[];
-}
+interface CardsProps {}
 
 const Cards: React.FC<CardsProps> = () => {
   const navigate = useNavigate();
