@@ -1,9 +1,47 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { BookStoreLayer, BookStoreContext, useContext } from "../store/context";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const Navbar = ({ books }) => {
+interface NavBarResponse {
+  id: number;
+  Title: string;
+  Star: number;
+  imageURL: string;
+}
+
+interface EbooksHistoryItem {
+  imageUrl: string;
+}
+
+interface NavBarProps {
+  index: number;
+  loading: boolean;
+  cards: NavBarResponse[];
+  cvv: string;
+  windowWidth: number;
+  cardNumber: string;
+  showModal: boolean;
+  setWindowWidth: React.Dispatch<React.SetStateAction<number>>;
+  visibleCardIndexes: number[];
+  setVisibleCardIndexes: React.Dispatch<React.SetStateAction<number[]>>;
+  loadingCards: () => void;
+  handleCloseModal: () => void;
+  handleShow: () => void;
+  handleCardNumberChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleCVVChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handlePrevButtonClick: () => void;
+  handleNextButtonClick: () => void;
+  handleBuy: () => void;
+  EbooksHistoryData: EbooksHistoryItem[];
+}
+
+const Navbar: React.FC<NavBarProps> = () => {
   const navigate = useNavigate();
+  const {
+    bookStoreData: { books },
+  } = useContext(BookStoreContext);
+
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredBooks, setFilteredBooks] = useState([]);
 
