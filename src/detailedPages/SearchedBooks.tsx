@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 import { Modal, Button } from "react-bootstrap";
 import { BookStoreContext, useContext } from "../store/context";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -29,24 +30,26 @@ interface SearchedBookProps {
 const SearchedBook: React.FC<SearchedBookProps> = () => {
   const {
     bookStoreData: {
+      error,
       books,
       setBooks,
       loading,
       setLoading,
-      error,
       setError,
       showModal,
-      setShowModal,
     },
     handleShow,
     handleClose,
   } = useContext(BookStoreContext);
+
+  const { id } = useParams<{ id: string }>();
+
   const loadingBooks = () => {
     setLoading(true);
     const getData = async () => {
       await axios
         .get(
-          "https://sfvmzovrujwtnthorsww.supabase.co/rest/v1/Books?select=*",
+          `https://sfvmzovrujwtnthorsww.supabase.co/rest/v1/Books?id=eq.${id}&select=*`,
           {
             headers: {
               apikey:
@@ -67,7 +70,19 @@ const SearchedBook: React.FC<SearchedBookProps> = () => {
 
   useEffect(() => {
     loadingBooks();
-  }, []);
+  }, [id]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  if (!books) {
+    return <div>No book found with ID: {id}</div>;
+  }
 
   return loading ? (
     <div>Loading...</div>

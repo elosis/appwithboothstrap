@@ -38,6 +38,10 @@ const Navbar: React.FC<NavBarProps> = () => {
     setFilteredBooks(filtered);
   };
 
+  const handleSearchButtonClick = () => {
+    navigate(`/searchedbooks?q=${searchQuery}`);
+  };
+
   const handleBookClick = (bookId: number) => {
     const selectedBook = books.find((book) => book.id === bookId);
     if (selectedBook) {
@@ -126,23 +130,28 @@ const Navbar: React.FC<NavBarProps> = () => {
               value={searchQuery}
               onChange={handleSearchInputChange}
             />
-            {searchQuery && (
-              <div className="dropdown-menu show">
-                {filteredBooks.map((book) => (
-                  <button
-                    key={book.id}
-                    className="dropdown-item"
-                    onClick={() => handleBookClick(book.id)}
-                  >
-                    {book.title}
-                  </button>
-                ))}
-              </div>
-            )}
-            <button className="btn btn-outline-success" type="submit">
+
+            <button
+              className="btn btn-outline-success"
+              type="submit"
+              onClick={handleSearchButtonClick}
+            >
               Search
             </button>
           </form>
+          {searchQuery && (
+            <div className="dropdown-menu show mt-1">
+              {filteredBooks.map((book) => (
+                <div
+                  key={book.id}
+                  className="dropdown-item"
+                  onClick={() => handleBookClick(book.id)}
+                >
+                  {book.title}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </nav>
