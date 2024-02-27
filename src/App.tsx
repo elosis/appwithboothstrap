@@ -17,6 +17,7 @@ import MainHeaderThree from "./detailedPages/MainHeaderThree";
 import SlideBooksOne from "./detailedPages/SlideBooksOne";
 import SlideBooksTwo from "./detailedPages/SlideBooksTwo";
 import { BookStoreLayer } from "./store/context";
+import SearchedBooks from "./detailedPages/SearchedBooks";
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
             <Route path="/mainheaderthree" element={<MainHeaderThree />} />
             <Route path="/slidebooksone" element={<SlideBooksOne />} />
             <Route path="/slidebookstwo" element={<SlideBooksTwo />} />
+            <Route path="/searchedbooks" element={<SearchedBooks />} />
           </Routes>
           <Footer />
         </Router>

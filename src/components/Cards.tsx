@@ -5,18 +5,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { useNavigate } from "react-router-dom";
 
-interface CardsResponse {
-  id: number;
-  Title: string;
-  Star: number;
-  imageURL: string;
+interface CardsProps {
+  id?: number;
+  Title?: string;
+  Star?: number;
+  imageURL?: string;
+  imageUrl?: string;
 }
-
-interface EbooksHistoryItem {
-  imageUrl: string;
-}
-
-interface CardsProps {}
 
 const Cards: React.FC<CardsProps> = () => {
   const navigate = useNavigate();

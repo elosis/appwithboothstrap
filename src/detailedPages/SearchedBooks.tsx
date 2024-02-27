@@ -22,8 +22,8 @@ export interface BooksResponse {
 }
 
 interface SearchedBookProps {
-  books: BooksResponse[];
-  setBooks: React.Dispatch<React.SetStateAction<BooksResponse[]>>;
+  books?: BooksResponse[];
+  setBooks?: React.Dispatch<React.SetStateAction<BooksResponse[]>>;
 }
 
 const SearchedBook: React.FC<SearchedBookProps> = () => {
