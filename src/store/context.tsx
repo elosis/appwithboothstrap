@@ -10,11 +10,29 @@ export interface CardsResponse {
   imageURL: string;
 }
 
+export interface BooksResponse {
+  id: number;
+  newPrice: number;
+  oldPrice: number;
+  star: number;
+  vote: number;
+  title: string;
+  imageUrl: string;
+  featureOne: string;
+  featureTwo: string;
+  featureThree: string;
+  featureFour: string;
+  overview: string;
+  type: string;
+}
+
 interface EbooksHistoryItem {
   imageUrl: string;
 }
 
 interface BookStoreData {
+  books: BooksResponse[];
+  setBooks: React.Dispatch<React.SetStateAction<BooksResponse[]>>;
   cards: CardsResponse[];
   setCards: React.Dispatch<React.SetStateAction<CardsResponse[]>>;
   loading: boolean;
@@ -48,6 +66,8 @@ export interface ContextValue {
 }
 
 const defaultValue: BookStoreData = {
+  books: [],
+  setBooks: () => {},
   cards: [],
   setCards: () => {},
   loading: true,
@@ -82,6 +102,7 @@ const BookStoreContext = createContext<ContextValue>({
 
 const BookStoreLayer = (props: React.PropsWithChildren<{}>) => {
   const [cards, setCards] = useState<CardsResponse[]>([]);
+  const [books, setBooks] = useState<BooksResponse[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [cardNumber, setCardNumber] = useState("");
@@ -208,6 +229,8 @@ const BookStoreLayer = (props: React.PropsWithChildren<{}>) => {
   ];
 
   const bookStoreData: BookStoreData = {
+    books,
+    setBooks,
     cards,
     setCards,
     loading,

@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { BookStoreLayer, BookStoreContext, useContext } from "../store/context";
+import { BookStoreContext, useContext } from "../store/context";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 interface NavBarResponse {
   id: number;
-  Title: string;
+  bookId: number;
+  title: string;
   Star: number;
   imageURL: string;
 }
@@ -49,12 +50,12 @@ const Navbar: React.FC<NavBarProps> = () => {
     const query = e.target.value;
     setSearchQuery(query);
     const filtered = books.filter((book) =>
-      book.Title.toLowerCase().includes(query.toLowerCase())
+      book.title.toLowerCase().includes(query.toLowerCase())
     );
     setFilteredBooks(filtered);
   };
 
-  const handleBookClick = (bookId) => {
+  const handleBookClick = (bookId: number) => {
     const selectedBook = books.find((book) => book.id === bookId);
     if (selectedBook) {
       navigate(`/detailedPages/${selectedBook.category}/${bookId}`);

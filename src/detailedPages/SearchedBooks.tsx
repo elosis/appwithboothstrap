@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Modal, Button } from "react-bootstrap";
+import { BookStoreContext, useContext } from "../store/context";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
@@ -20,15 +21,26 @@ export interface BooksResponse {
   type: string;
 }
 
-const SearchedBook = () => {
-  const [books, setBooks] = useState<BooksResponse[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
-  const [showModal, setShowModal] = useState(false);
+interface SearchedBookProps {
+  books: BooksResponse[];
+  setBooks: React.Dispatch<React.SetStateAction<BooksResponse[]>>;
+}
 
-  const handleClose = () => setShowModal(false);
-  const handleShow = () => setShowModal(true);
-
+const SearchedBook: React.FC<SearchedBookProps> = () => {
+  const {
+    bookStoreData: {
+      books,
+      setBooks,
+      loading,
+      setLoading,
+      error,
+      setError,
+      showModal,
+      setShowModal,
+    },
+    handleShow,
+    handleClose,
+  } = useContext(BookStoreContext);
   const loadingBooks = () => {
     setLoading(true);
     const getData = async () => {
