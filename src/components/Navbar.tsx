@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { BookStoreContext, useContext } from "../store/context";
 import "bootstrap/dist/css/bootstrap.min.css";
+import SearchResults from "./SearchResults";
 
 interface NavBarResponse {
   id: number;
@@ -28,6 +29,12 @@ const Navbar: React.FC<NavBarProps> = () => {
       searchQuery,
     },
   } = useContext(BookStoreContext);
+
+  useEffect(() => {
+    console.log("searchQuery:", searchQuery);
+    console.log("filteredBooks:", filteredBooks);
+    console.log("books:", books);
+  }, [searchQuery, filteredBooks]);
 
   const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const query = e.target.value;
@@ -140,17 +147,10 @@ const Navbar: React.FC<NavBarProps> = () => {
             </button>
           </form>
           {searchQuery && (
-            <div className="dropdown-menu show mt-1">
-              {filteredBooks.map((book) => (
-                <div
-                  key={book.id}
-                  className="dropdown-item"
-                  onClick={() => handleBookClick(book.id)}
-                >
-                  {book.title}
-                </div>
-              ))}
-            </div>
+            <SearchResults
+              filteredBooks={filteredBooks}
+              handleBookClick={handleBookClick}
+            />
           )}
         </div>
       </div>
