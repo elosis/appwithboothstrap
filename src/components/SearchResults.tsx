@@ -18,7 +18,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("Filtered books:", filteredBooks);
+    console.log("filteredBooks:", filteredBooks);
   }, [filteredBooks]);
 
   return (

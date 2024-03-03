@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Navbar from "../components/Navbar";
 import { useParams } from "react-router-dom";
 import { Modal, Button } from "react-bootstrap";
 import { BookStoreContext, useContext } from "../store/context";
@@ -29,47 +30,21 @@ interface SearchedBookProps {
 
 const SearchedBook: React.FC<SearchedBookProps> = () => {
   const {
-    bookStoreData: {
-      error,
-      books,
-      setBooks,
-      loading,
-      setLoading,
-      setError,
-      showModal,
-    },
+    bookStoreData: { error, books, loading, showModal },
     handleShow,
     handleClose,
+    loadingBooks,
   } = useContext(BookStoreContext);
 
   const { id } = useParams<{ id: string }>();
 
-  const loadingBooks = () => {
-    setLoading(true);
-    const getData = async () => {
-      await axios
-        .get(
-          `https://sfvmzovrujwtnthorsww.supabase.co/rest/v1/Books?id=eq.${id}&select=*`,
-          {
-            headers: {
-              apikey:
-                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNmdm16b3ZydWp3dG50aG9yc3d3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDg3OTA2ODQsImV4cCI6MjAyNDM2NjY4NH0.yQr7ifZsyEBxhcAYGkMuP7CnAiOmq1kQ_93ZWqB45jc",
-            },
-          }
-        )
-        .then((res) => setBooks(res.data))
-        .catch((err) => {
-          const error =
-            err.response && err.response.status === 404 ? "error" : "no error";
-          setError(error);
-        });
-    };
-    getData();
-    setLoading(false);
-  };
-
   useEffect(() => {
-    loadingBooks();
+    if (id) {
+      const idAsNumber = parseInt(id);
+      if (!isNaN(idAsNumber)) {
+        loadingBooks(idAsNumber);
+      }
+    }
   }, [id]);
 
   if (loading) {
@@ -88,6 +63,7 @@ const SearchedBook: React.FC<SearchedBookProps> = () => {
     <div>Loading...</div>
   ) : (
     <div>
+      <Navbar />
       {books?.map((data, i) => (
         <div className="container" key={i}>
           <div

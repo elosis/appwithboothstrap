@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../components/Navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
@@ -11,6 +12,7 @@ const SlideBooksOne = () => {
 
   return (
     <div className="container">
+      <Navbar />
       <div
         className="card mb-3 mx-auto mt-4 border-0"
         style={{ maxWidth: "840px" }}
