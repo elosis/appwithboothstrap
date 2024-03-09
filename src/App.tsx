@@ -46,7 +46,7 @@ function App() {
             <Route path="/mainheaderthree" element={<MainHeaderThree />} />
             <Route path="/slidebooksone" element={<SlideBooksOne />} />
             <Route path="/slidebookstwo" element={<SlideBooksTwo />} />
-            <Route path="/searchedbooks" element={<SearchedBooks />} />
+            <Route path="/searchedbooks/:id" element={<SearchedBooks />} />
           </Routes>
           <Footer />
         </Router>

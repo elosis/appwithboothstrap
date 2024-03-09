@@ -112,6 +112,14 @@
   ) !important; /* Adjust color and transparency as needed */
 }
 
+.position-relative {
+  position: relative;
+}
+
+.position-absolute {
+  position: absolute;
+}
+
 .quick-add-button {
   position: absolute;
   bottom: 87.7px;

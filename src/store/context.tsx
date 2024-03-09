@@ -67,7 +67,7 @@ export interface ContextValue {
   handleCloseModal: () => void;
   handleBuy: () => void;
   loadingCards: () => void;
-  loadingBooks: (id: number) => void;
+  loadingBooks: () => void;
 }
 
 const defaultValue: BookStoreData = {
@@ -197,12 +197,12 @@ const BookStoreLayer = (props: React.PropsWithChildren<{}>) => {
     setLoading(false);
   };
 
-  const loadingBooks = (id: number) => {
+  const loadingBooks = () => {
     setLoading(true);
     const getData = async () => {
       await axios
         .get(
-          `https://sfvmzovrujwtnthorsww.supabase.co/rest/v1/Books?id=eq.${id}&select=*`,
+          "https://sfvmzovrujwtnthorsww.supabase.co/rest/v1/Books?select=*",
           {
             headers: {
               apikey:
@@ -220,11 +220,9 @@ const BookStoreLayer = (props: React.PropsWithChildren<{}>) => {
         });
     };
     getData();
-    setLoading(false);
-    console.log("API Response:", books);
-  };
 
-  console.log("Books data:", books);
+    setLoading(false);
+  };
 
   const EbooksHistoryData: EbooksHistoryItem[] = [
     {

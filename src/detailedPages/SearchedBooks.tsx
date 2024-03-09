@@ -7,7 +7,7 @@ import { BookStoreContext, useContext } from "../store/context";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
-export interface BooksResponse {
+export interface SingleBookProps {
   id: number;
   newPrice: number;
   oldPrice: number;
@@ -23,82 +23,98 @@ export interface BooksResponse {
   type: string;
 }
 
-interface SearchedBookProps {
-  books?: BooksResponse[];
-  setBooks?: React.Dispatch<React.SetStateAction<BooksResponse[]>>;
-}
-
-const SearchedBook: React.FC<SearchedBookProps> = () => {
+const SearchedBook = () => {
   const {
-    bookStoreData: { error, books, loading, showModal },
+    bookStoreData: { setError, showModal },
     handleShow,
     handleClose,
-    loadingBooks,
   } = useContext(BookStoreContext);
-
-  const { id } = useParams<{ id: string }>();
+  const { id } = useParams();
+  const [singleBook, setSingleBook] = useState<SingleBookProps | null>();
 
   useEffect(() => {
-    if (id) {
-      const idAsNumber = parseInt(id);
-      if (!isNaN(idAsNumber)) {
-        loadingBooks(idAsNumber);
-      }
-    }
+    const getData = async () => {
+      await axios
+        .get<SingleBookProps[]>(
+          `https://sfvmzovrujwtnthorsww.supabase.co/rest/v1/Books?id=eq.${id}&select=*`,
+          {
+            headers: {
+              apikey:
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNmdm16b3ZydWp3dG50aG9yc3d3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDg3OTA2ODQsImV4cCI6MjAyNDM2NjY4NH0.yQr7ifZsyEBxhcAYGkMuP7CnAiOmq1kQ_93ZWqB45jc",
+            },
+          }
+        )
+        .then((res) => {
+          setSingleBook(res.data[0]);
+        })
+        .catch((err) => {
+          const error =
+            err.response && err.response.status === 404 ? "error" : "no error";
+          setError(error);
+        });
+    };
+    getData();
   }, [id]);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  useEffect(() => {
+    console.log("singleBook:", singleBook);
+  }, [singleBook]);
 
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
-
-  if (!books) {
-    return <div>No book found with ID: {id}</div>;
-  }
-
-  return loading ? (
-    <div>Loading...</div>
-  ) : (
+  return (
     <div>
       <Navbar />
-      {books?.map((data, i) => (
-        <div className="container" key={i}>
+      {singleBook ? (
+        <div className="container">
           <div
             className="card mb-3 mx-auto mt-4 border-0"
-            style={{ maxWidth: "840px" }}
+            // style={{ maxWidth: "840px" }}
           >
             <div className="row g-0">
               <div className="col-md-4">
-                <img src={data.imageUrl} alt="..." />
+                <img src={singleBook?.imageUrl} alt="..." className="w-75" />
                 <div className="mt-4" style={{ color: "green" }}>
-                  <div className="d-flex gap-2" style={{ marginTop: "-15px" }}>
-                    <i className="bi bi-check-circle"></i>
-                    <p>{data.featureOne}</p>
-                  </div>
-                  <div className="d-flex gap-2" style={{ marginTop: "-15px" }}>
-                    <i className="bi bi-check-circle"></i>
-                    <p>{data.featureTwo}</p>
-                  </div>
-                  <div className="d-flex gap-2" style={{ marginTop: "-15px" }}>
-                    <i className="bi bi-check-circle"></i>
-                    <p>{data.featureThree}</p>
-                  </div>
-                  <div className="d-flex gap-2" style={{ marginTop: "-15px" }}>
-                    <i className="bi bi-check-circle"></i>
-                    <p>{data.featureFour}</p>
-                  </div>
+                  {singleBook?.featureOne && (
+                    <div
+                      className="d-flex gap-2"
+                      style={{ marginTop: "-15px" }}
+                    >
+                      <i className="bi bi-check-circle"></i>
+                      <p>{singleBook?.featureOne}</p>
+                    </div>
+                  )}
+                  {singleBook?.featureTwo && (
+                    <div
+                      className="d-flex gap-2"
+                      style={{ marginTop: "-15px" }}
+                    >
+                      <i className="bi bi-check-circle"></i>
+                      <p>{singleBook?.featureTwo}</p>
+                    </div>
+                  )}
+                  {singleBook?.featureThree && (
+                    <div
+                      className="d-flex gap-2"
+                      style={{ marginTop: "-15px" }}
+                    >
+                      <i className="bi bi-check-circle"></i>
+                      <p>{singleBook?.featureThree}</p>
+                    </div>
+                  )}
+                  {singleBook?.featureFour && (
+                    <div className="d-flex gap-2">
+                      <i className="bi bi-check-circle"></i>
+                      <p>{singleBook?.featureFour}</p>
+                    </div>
+                  )}
                 </div>
               </div>
               <div className="col-md-8">
                 <div className="card-body">
-                  <h4 className="card-title">{data.title}</h4>
+                  <h4 className="card-title">{singleBook?.title}</h4>
                   <div className="d-flex gap-5 mb-4">
                     <div className="d-flex gap-1 justify-content-center">
                       {Array.from(
-                        { length: Math.floor(data?.star) },
+                        { length: Math.floor(singleBook?.star) },
                         (_, index) => (
                           <i
                             key={`full-${index}`}
@@ -107,21 +123,23 @@ const SearchedBook: React.FC<SearchedBookProps> = () => {
                           ></i>
                         )
                       )}
-                      {data?.star % 1 !== 0 && (
+                      {singleBook?.star % 1 !== 0 && (
                         <i
                           className="bi bi-star-half"
                           style={{ color: "gold" }}
                         ></i>
                       )}
                     </div>
-                    <div style={{ color: "darkgreen" }}>{data.vote}</div>
+                    <div style={{ color: "darkgreen" }}>{singleBook?.vote}</div>
                   </div>
                   <div className="border-top">
-                    <h6 className="h6 mt-1">{data.type}</h6>
+                    <h6 className="h6 mt-1">{singleBook?.type}</h6>
                     <div className="d-flex gap-3 flex-row align-items-end">
-                      <div style={{ fontSize: "32px" }}>{data.newPrice}</div>
+                      <div style={{ fontSize: "32px" }}>
+                        {singleBook?.newPrice}
+                      </div>
                       <div style={{ textDecorationLine: "line-through" }}>
-                        {data.oldPrice}
+                        {singleBook?.oldPrice}
                       </div>
                       <div>|</div>
                       <div style={{ color: "red" }}>Save 10%</div>
@@ -202,11 +220,13 @@ const SearchedBook: React.FC<SearchedBookProps> = () => {
             <h3>Overview</h3>
             <div className="border">
               <h6>Notes From Your Bookseller</h6>
-              <div className="d-flex gap-5 ">{data.overview}</div>
+              <div className="d-flex gap-5 ">{singleBook?.overview}</div>
             </div>
           </div>
         </div>
-      ))}
+      ) : (
+        <div>No book found with ID: {id}</div>
+      )}
     </div>
   );
 };

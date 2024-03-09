@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { BookStoreContext, useContext } from "../store/context";
 import "bootstrap/dist/css/bootstrap.min.css";
-import SearchResults from "./SearchResults";
 
 interface NavBarResponse {
   id: number;
@@ -28,13 +27,12 @@ const Navbar: React.FC<NavBarProps> = () => {
       setFilteredBooks,
       searchQuery,
     },
+    loadingBooks,
   } = useContext(BookStoreContext);
 
   useEffect(() => {
-    console.log("searchQuery:", searchQuery);
-    console.log("filteredBooks:", filteredBooks);
-    console.log("books:", books);
-  }, [searchQuery, filteredBooks]);
+    loadingBooks();
+  }, []);
 
   const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const query = e.target.value;
@@ -52,7 +50,7 @@ const Navbar: React.FC<NavBarProps> = () => {
   const handleBookClick = (bookId: number) => {
     const selectedBook = books.find((book) => book.id === bookId);
     if (selectedBook) {
-      navigate(`/detailedPages/${selectedBook.type}/${bookId}`);
+      navigate(`/searchedbooks/${bookId}`);
     }
     setSearchQuery("");
     setFilteredBooks([]);
@@ -77,13 +75,22 @@ const Navbar: React.FC<NavBarProps> = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item" onClick={() => navigate("/")}>
-              <a className="nav-link active" aria-current="page" href="#">
+            <li className="nav-item">
+              <a
+                className="nav-link active"
+                aria-current="page"
+                href="#"
+                onClick={() => navigate("/")}
+              >
                 Home
               </a>
             </li>
-            <li className="nav-item" onClick={() => navigate("stores")}>
-              <a className="nav-link" href="#">
+            <li className="nav-item">
+              <a
+                className="nav-link"
+                href="#"
+                onClick={() => navigate("/stores")}
+              >
                 Stores & Events
               </a>
             </li>
@@ -102,7 +109,7 @@ const Navbar: React.FC<NavBarProps> = () => {
                   <a
                     className="dropdown-item"
                     href="#"
-                    onClick={() => navigate("fiction")}
+                    onClick={() => navigate("/fiction")}
                   >
                     Fiction
                   </a>
@@ -111,7 +118,7 @@ const Navbar: React.FC<NavBarProps> = () => {
                   <a
                     className="dropdown-item"
                     href="#"
-                    onClick={() => navigate("ebooks")}
+                    onClick={() => navigate("/ebooks")}
                   >
                     eBooks
                   </a>
@@ -120,7 +127,7 @@ const Navbar: React.FC<NavBarProps> = () => {
                   <a
                     className="dropdown-item"
                     href="#"
-                    onClick={() => navigate("kids")}
+                    onClick={() => navigate("/kids")}
                   >
                     Kids
                   </a>
@@ -137,6 +144,33 @@ const Navbar: React.FC<NavBarProps> = () => {
               value={searchQuery}
               onChange={handleSearchInputChange}
             />
+            {searchQuery && filteredBooks.length > 0 && (
+              <div className="position-relative">
+                <div
+                  className="dropdown-menu show mt-1 position-absolute"
+                  style={{ top: "100%", left: "-214px", opacity: "0.9" }}
+                >
+                  {filteredBooks.map((book) => (
+                    <div
+                      key={book.id}
+                      className="dropdown-item"
+                      onClick={() => {
+                        handleBookClick(book.id);
+                      }}
+                    >
+                      <div className="d-flex gap-2">
+                        <img
+                          src={book.imageUrl}
+                          style={{ width: "20px" }}
+                          alt={book.title}
+                        />
+                        <div>{book.title}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
 
             <button
               className="btn btn-outline-success"
@@ -146,12 +180,6 @@ const Navbar: React.FC<NavBarProps> = () => {
               Search
             </button>
           </form>
-          {searchQuery && (
-            <SearchResults
-              filteredBooks={filteredBooks}
-              handleBookClick={handleBookClick}
-            />
-          )}
         </div>
       </div>
     </nav>
