@@ -114,7 +114,10 @@ const Knowledge = () => {
               data-bs-target="#collapseOne"
               aria-expanded={isReadMoreVisible ? "true" : "false"}
               aria-controls="collapseOne"
-              style={{ backgroundColor: "white" }}
+              style={{
+                backgroundColor: "white",
+                boxShadow: "0 0 0 0.5px white",
+              }}
               onClick={toggleReadMore}
             >
               <span className="mx-auto text-center">

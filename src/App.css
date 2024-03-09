@@ -49,6 +49,10 @@
   margin-right: 5px;
 }
 
+.accordion-button:focus {
+  outline: none;
+}
+
 .icon-container {
   display: flex;
   flex-direction: column;
