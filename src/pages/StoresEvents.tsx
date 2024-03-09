@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import Navbar from "../components/Navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -25,15 +24,7 @@ const StoresEvents = () => {
             <strong>SEARCH LOCATION :</strong> Istanbul
           </p>
           <div style={{ width: "900px", maxWidth: "900px" }}>
-            <LoadScript googleMapsApiKey="YOUR_GOOGLE_MAPS_API_KEY">
-              <GoogleMap
-                mapContainerStyle={containerStyle}
-                center={center}
-                zoom={10}
-              >
-                <Marker position={center} />
-              </GoogleMap>
-            </LoadScript>
+            <img src="https://www.google.com/mymaps/viewer?mid=1apoDcjVZIXb0a3NiFBDhuq75WKU&hl=en_US" />
           </div>
           <h4 className="mt-5">0 Upcoming Events Near Istanbul</h4>
           <div className="mt-5 d-flex flex-row gap-5">
