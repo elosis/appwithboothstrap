@@ -23,9 +23,12 @@ const StoresEvents = () => {
           <p>
             <strong>SEARCH LOCATION :</strong> Istanbul
           </p>
-          <div style={{ width: "900px", maxWidth: "900px" }}>
-            <img src="https://www.google.com/mymaps/viewer?mid=1apoDcjVZIXb0a3NiFBDhuq75WKU&hl=en_US" />
-          </div>
+          <img
+            src="https://cbsakademi.ibb.gov.tr/uploads/2016/11/infowindow.png"
+            // className="w-50"
+            style={{ width: "800px", height: "400px", maxWidth: "800px" }}
+            alt="location"
+          />
           <h4 className="mt-5">0 Upcoming Events Near Istanbul</h4>
           <div className="mt-5 d-flex flex-row gap-5">
             <div>
