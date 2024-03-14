@@ -11,13 +11,9 @@ import StoresEvents from "./pages/StoresEvents";
 import Fiction from "./pages/Fiction";
 import Ebooks from "./pages/Ebooks";
 import Kids from "./pages/Kids";
-import MainHeaderOne from "./detailedPages/MainHeaderOne";
-import MainHeaderTwo from "./detailedPages/MainHeaderTwo";
-import MainHeaderThree from "./detailedPages/MainHeaderThree";
-import SlideBooksOne from "./detailedPages/SlideBooksOne";
-import SlideBooksTwo from "./detailedPages/SlideBooksTwo";
 import { BookStoreLayer } from "./store/context";
 import SearchedBooks from "./detailedPages/SearchedBooks";
+import CarouselBooks from "./detailedPages/CarouselBooks";
 
 function App() {
   return (
@@ -41,12 +37,8 @@ function App() {
             <Route path="/fiction" element={<Fiction />} />
             <Route path="/ebooks" element={<Ebooks />} />
             <Route path="/kids" element={<Kids />} />
-            <Route path="/mainheaderone" element={<MainHeaderOne />} />
-            <Route path="/mainheadertwo" element={<MainHeaderTwo />} />
-            <Route path="/mainheaderthree" element={<MainHeaderThree />} />
-            <Route path="/slidebooksone" element={<SlideBooksOne />} />
-            <Route path="/slidebookstwo" element={<SlideBooksTwo />} />
             <Route path="/searchedbooks/:id" element={<SearchedBooks />} />
+            <Route path="/carouselbooks/:id" element={<CarouselBooks />} />
           </Routes>
           <Footer />
         </Router>

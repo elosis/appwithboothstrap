@@ -1,11 +1,41 @@
-import React from "react";
+import { useEffect, useState } from "react";
+import { BookStoreContext, useContext } from "../store/context";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+export interface CarouselResponse {
+  id: number;
+  imageUrl: string;
+}
+
 const Carousel = () => {
+  const {
+    bookStoreData: { carousel, loading },
+    loadingCarousel,
+  } = useContext(BookStoreContext);
+
+  const [activeIndex, setActiveIndex] = useState(0);
   const navigate = useNavigate();
 
-  return (
+  useEffect(() => {
+    loadingCarousel();
+  }, []);
+
+  const handleNext = () => {
+    setActiveIndex((prevIndex) =>
+      prevIndex === carousel.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const handlePrev = () => {
+    setActiveIndex((prevIndex) =>
+      prevIndex === 0 ? carousel.length - 1 : prevIndex - 1
+    );
+  };
+
+  return loading ? (
+    <div>Loading...</div>
+  ) : (
     <div id="carouselExampleDark" className="carousel carousel-dark slide mt-5">
       <div className="carousel-indicators">
         <button
@@ -33,36 +63,32 @@ const Carousel = () => {
         ></button>
       </div>
       <div className="carousel-inner">
-        <div className="carousel-item active" data-bs-interval="10000">
-          <img
-            src="https://dispatch.barnesandnoble.com/content/dam/ccr/homepage/daily/2023/12/29/28406_Quote_B2_Book-Club_Mercury_12-29.jpg"
-            className="d-block mini-photo mx-auto w-75"
-            alt="..."
-            onClick={() => navigate("mainheaderone")}
-          />
-        </div>
-        <div className="carousel-item" data-bs-interval="2000">
-          <img
-            src="https://dispatch.barnesandnoble.com/content/dam/ccr/BNApp/PromoCarousel/2024/01/28430_Quote_A-2_Wild-and-Distance-Seas_01-02.jpg"
-            className="d-block mini-photo mx-auto w-75"
-            alt="..."
-            onClick={() => navigate("mainheadertwo")}
-          />
-        </div>
-        <div className="carousel-item">
-          <img
-            src="https://dispatch.barnesandnoble.com/content/dam/ccr/homepage/daily/2024/01/30/28604_Quote_B1_BookClub_Good-Material_01-30_b.jpg"
-            className="d-block mini-photo mx-auto w-75"
-            alt="..."
-            onClick={() => navigate("mainheaderthree")}
-          />
-        </div>
+        {carousel.map((data, i) => (
+          <div
+            key={i}
+            // className="carousel-item"
+            className={`carousel-item ${i === activeIndex ? "active" : ""}`}
+            data-bs-interval="2000"
+            onClick={() => {
+              navigate(`/carouselbooks/${data.id}`);
+            }}
+          >
+            <img
+              src={data?.imageUrl}
+              style={{ height: "450px" }}
+              className="d-block mini-photo mx-auto w-75"
+              alt={`Slide ${i + 1}`}
+            />
+          </div>
+        ))}
       </div>
+
       <button
         className="carousel-control-prev"
         type="button"
         data-bs-target="#carouselExampleDark"
         data-bs-slide="prev"
+        onClick={handlePrev}
       >
         <span className="carousel-control-prev-icon" aria-hidden="true"></span>
         <span className="visually-hidden">Previous</span>
@@ -72,6 +98,7 @@ const Carousel = () => {
         type="button"
         data-bs-target="#carouselExampleDark"
         data-bs-slide="next"
+        onClick={handleNext}
       >
         <span className="carousel-control-next-icon" aria-hidden="true"></span>
         <span className="visually-hidden">Next</span>

@@ -10,6 +10,22 @@ export interface CardsResponse {
   imageURL: string;
 }
 
+export interface CarouselResponse {
+  id: number;
+  newPrice: number;
+  oldPrice: number;
+  star: number;
+  vote: number;
+  title: string;
+  imageUrl: string;
+  featureOne: string;
+  featureTwo: string;
+  featureThree: string;
+  featureFour: string;
+  overview: string;
+  type: string;
+}
+
 export interface BooksResponse {
   id: number;
   newPrice: number;
@@ -53,6 +69,8 @@ export interface BookStoreData {
   setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
   books: BooksResponse[];
   setBooks: React.Dispatch<React.SetStateAction<BooksResponse[]>>;
+  carousel: CarouselResponse[];
+  setCarousel: React.Dispatch<React.SetStateAction<CarouselResponse[]>>;
 }
 
 export interface ContextValue {
@@ -68,6 +86,7 @@ export interface ContextValue {
   handleBuy: () => void;
   loadingCards: () => void;
   loadingBooks: () => void;
+  loadingCarousel: () => void;
 }
 
 const defaultValue: BookStoreData = {
@@ -75,6 +94,8 @@ const defaultValue: BookStoreData = {
   setSearchQuery: () => {},
   filteredBooks: [],
   setFilteredBooks: () => {},
+  carousel: [],
+  setCarousel: () => {},
   books: [],
   setBooks: () => {},
   cards: [],
@@ -107,12 +128,14 @@ const BookStoreContext = createContext<ContextValue>({
   handleBuy: () => {},
   loadingCards: () => {},
   loadingBooks: () => {},
+  loadingCarousel: () => {},
   EbooksHistoryData: [],
 });
 
 const BookStoreLayer = (props: React.PropsWithChildren<{}>) => {
   const [cards, setCards] = useState<CardsResponse[]>([]);
   const [books, setBooks] = useState<BooksResponse[]>([]);
+  const [carousel, setCarousel] = useState<CarouselResponse[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [cardNumber, setCardNumber] = useState("");
@@ -220,7 +243,32 @@ const BookStoreLayer = (props: React.PropsWithChildren<{}>) => {
         });
     };
     getData();
+    setLoading(false);
+  };
 
+  const loadingCarousel = () => {
+    setLoading(true);
+    const getData = async () => {
+      await axios
+        .get(
+          "https://sfvmzovrujwtnthorsww.supabase.co/rest/v1/MainPage?select=*",
+          {
+            headers: {
+              apikey:
+                "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNmdm16b3ZydWp3dG50aG9yc3d3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDg3OTA2ODQsImV4cCI6MjAyNDM2NjY4NH0.yQr7ifZsyEBxhcAYGkMuP7CnAiOmq1kQ_93ZWqB45jc",
+            },
+          }
+        )
+        .then((res) => {
+          setCarousel(res.data);
+        })
+        .catch((err) => {
+          const error =
+            err.response && err.response.status === 404 ? "error" : "no error";
+          setError(error);
+        });
+    };
+    getData();
     setLoading(false);
   };
 
@@ -272,6 +320,8 @@ const BookStoreLayer = (props: React.PropsWithChildren<{}>) => {
     setSearchQuery,
     filteredBooks,
     setFilteredBooks,
+    carousel,
+    setCarousel,
     books,
     setBooks,
     cards,
@@ -304,6 +354,7 @@ const BookStoreLayer = (props: React.PropsWithChildren<{}>) => {
     handleBuy,
     loadingCards,
     loadingBooks,
+    loadingCarousel,
     EbooksHistoryData,
   };
 
