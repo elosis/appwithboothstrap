@@ -206,54 +206,6 @@ const Cards: React.FC<CardsProps> = () => {
           </div>
         </div>
       </div>
-      <div
-        id="carouselExampleAutoplaying"
-        className="carousel slide"
-        data-bs-ride="carousel"
-      >
-        <div className="carousel-inner mt-5">
-          <div className="carousel-item active">
-            <img
-              src="https://dispatch.barnesandnoble.com/content/dam/ccr/homepage/daily/2024/01/09/28480_Quote_B2_Leigh_Bardugo_01-09.jpg"
-              className="d-block w-75 mx-auto"
-              alt="..."
-              onClick={() => navigate("slidebooksone")}
-            />
-          </div>
-          <div className="carousel-item">
-            <img
-              src="https://dispatch.barnesandnoble.com/content/dam/ccr/homepage/daily/2023/12/29/28406_Quote_B3_YABook-Club_AFragileEnchantment_12-29.jpg"
-              className="d-block w-75 mx-auto"
-              alt="..."
-              onClick={() => navigate("slidebookstwo")}
-            />
-          </div>
-        </div>
-        <button
-          className="carousel-control-prev"
-          type="button"
-          data-bs-target="#carouselExampleAutoplaying"
-          data-bs-slide="prev"
-        >
-          <span
-            className="carousel-control-prev-icon"
-            aria-hidden="true"
-          ></span>
-          <span className="visually-hidden">Previous</span>
-        </button>
-        <button
-          className="carousel-control-next"
-          type="button"
-          data-bs-target="#carouselExampleAutoplaying"
-          data-bs-slide="next"
-        >
-          <span
-            className="carousel-control-next-icon"
-            aria-hidden="true"
-          ></span>
-          <span className="visually-hidden">Next</span>
-        </button>
-      </div>
       <div>
         <div className="text-center " style={{ marginTop: "100px" }}>
           <h4>For the History Buff</h4>
