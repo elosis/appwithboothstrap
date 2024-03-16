@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { BookStoreContext, useContext } from "../store/context";
+import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 interface NavBarResponse {
@@ -135,51 +136,57 @@ const Navbar: React.FC<NavBarProps> = () => {
               </ul>
             </li>
           </ul>
-          <form className="d-flex" role="search">
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-              value={searchQuery}
-              onChange={handleSearchInputChange}
-            />
-            {searchQuery && filteredBooks.length > 0 && (
-              <div className="position-relative">
-                <div
-                  className="dropdown-menu show mt-1 position-absolute"
-                  style={{ top: "100%", left: "-214px", opacity: "0.9" }}
-                >
-                  {filteredBooks.map((book) => (
-                    <div
-                      key={book.id}
-                      className="dropdown-item"
-                      onClick={() => {
-                        handleBookClick(book.id);
-                      }}
-                    >
-                      <div className="d-flex gap-2">
-                        <img
-                          src={book.imageUrl}
-                          style={{ width: "20px" }}
-                          alt={book.title}
-                        />
-                        <div>{book.title}</div>
+          <></>
+          <div className="d-flex gap-4">
+            <form className="d-flex" role="search">
+              <input
+                className="form-control me-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+                value={searchQuery}
+                onChange={handleSearchInputChange}
+              />
+              {searchQuery && filteredBooks.length > 0 && (
+                <div className="position-relative">
+                  <div
+                    className="dropdown-menu show mt-1 position-absolute"
+                    style={{ top: "100%", left: "-214px", opacity: "0.9" }}
+                  >
+                    {filteredBooks.map((book) => (
+                      <div
+                        key={book.id}
+                        className="dropdown-item"
+                        onClick={() => {
+                          handleBookClick(book.id);
+                        }}
+                      >
+                        <div className="d-flex gap-2">
+                          <img
+                            src={book.imageUrl}
+                            style={{ width: "20px" }}
+                            alt={book.title}
+                          />
+                          <div>{book.title}</div>
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
 
-            <button
-              className="btn btn-outline-success"
-              type="submit"
-              onClick={handleSearchButtonClick}
-            >
-              Search
-            </button>
-          </form>
+              <button
+                className="btn btn-outline-success"
+                type="submit"
+                onClick={handleSearchButtonClick}
+              >
+                Search
+              </button>
+            </form>
+            <Link to="/basket" className="btn btn-outline-primary me-2">
+              <i className="bi bi-cart2"></i>
+            </Link>
+          </div>
         </div>
       </div>
     </nav>

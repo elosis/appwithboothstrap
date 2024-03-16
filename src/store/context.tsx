@@ -42,6 +42,22 @@ export interface BooksResponse {
   type: string;
 }
 
+export interface BasketResponse {
+  id: number;
+  newPrice: number;
+  oldPrice: number;
+  star: number;
+  vote: number;
+  title: string;
+  imageUrl: string;
+  featureOne: string;
+  featureTwo: string;
+  featureThree: string;
+  featureFour: string;
+  overview: string;
+  type: string;
+}
+
 export interface EbooksHistoryItem {
   imageUrl: string;
 }
@@ -71,6 +87,8 @@ export interface BookStoreData {
   setBooks: React.Dispatch<React.SetStateAction<BooksResponse[]>>;
   carousel: CarouselResponse[];
   setCarousel: React.Dispatch<React.SetStateAction<CarouselResponse[]>>;
+  basketItems: BasketResponse[];
+  setBasketItems: React.Dispatch<React.SetStateAction<BasketResponse[]>>;
 }
 
 export interface ContextValue {
@@ -87,6 +105,8 @@ export interface ContextValue {
   loadingCards: () => void;
   loadingBooks: () => void;
   loadingCarousel: () => void;
+  addToBasket: (item: BasketResponse) => void;
+  removeFromBasket: (itemId: number) => void;
 }
 
 const defaultValue: BookStoreData = {
@@ -98,6 +118,8 @@ const defaultValue: BookStoreData = {
   setCarousel: () => {},
   books: [],
   setBooks: () => {},
+  basketItems: [],
+  setBasketItems: () => {},
   cards: [],
   setCards: () => {},
   loading: true,
@@ -129,6 +151,8 @@ const BookStoreContext = createContext<ContextValue>({
   loadingCards: () => {},
   loadingBooks: () => {},
   loadingCarousel: () => {},
+  addToBasket: () => {},
+  removeFromBasket: () => {},
   EbooksHistoryData: [],
 });
 
@@ -136,6 +160,7 @@ const BookStoreLayer = (props: React.PropsWithChildren<{}>) => {
   const [cards, setCards] = useState<CardsResponse[]>([]);
   const [books, setBooks] = useState<BooksResponse[]>([]);
   const [carousel, setCarousel] = useState<CarouselResponse[]>([]);
+  const [basketItems, setBasketItems] = useState<BasketResponse[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [cardNumber, setCardNumber] = useState("");
@@ -272,6 +297,14 @@ const BookStoreLayer = (props: React.PropsWithChildren<{}>) => {
     setLoading(false);
   };
 
+  const addToBasket = (item: BasketResponse) => {
+    setBasketItems([...basketItems, item]);
+  };
+
+  const removeFromBasket = (itemId: number) => {
+    setBasketItems(basketItems.filter((item) => item.id !== itemId));
+  };
+
   const EbooksHistoryData: EbooksHistoryItem[] = [
     {
       imageUrl:
@@ -316,6 +349,8 @@ const BookStoreLayer = (props: React.PropsWithChildren<{}>) => {
   ];
 
   const bookStoreData: BookStoreData = {
+    basketItems,
+    setBasketItems,
     searchQuery,
     setSearchQuery,
     filteredBooks,
@@ -343,6 +378,8 @@ const BookStoreLayer = (props: React.PropsWithChildren<{}>) => {
   };
 
   const data: ContextValue = {
+    addToBasket,
+    removeFromBasket,
     bookStoreData,
     handleClose,
     handleShow,
