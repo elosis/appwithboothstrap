@@ -1,13 +1,24 @@
 import { createContext, useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import axios from "axios";
 
 export interface CardsResponse {
   id: number;
-  Title: string;
-  Star: number;
-  imageURL: string;
+  newPrice: number;
+  oldPrice: number;
+  star: number;
+  vote: number;
+  title: string;
+  imageUrl: string;
+  featureOne: string;
+  featureTwo: string;
+  featureThree: string;
+  featureFour: string;
+  overview: string;
+  type: string;
+  quantity: number;
 }
 
 export interface CarouselResponse {
@@ -42,7 +53,7 @@ export interface BooksResponse {
   type: string;
 }
 
-export interface BasketResponse {
+interface BasketProps {
   id: number;
   newPrice: number;
   oldPrice: number;
@@ -56,6 +67,7 @@ export interface BasketResponse {
   featureFour: string;
   overview: string;
   type: string;
+  quantity: number;
 }
 
 export interface EbooksHistoryItem {
@@ -87,8 +99,10 @@ export interface BookStoreData {
   setBooks: React.Dispatch<React.SetStateAction<BooksResponse[]>>;
   carousel: CarouselResponse[];
   setCarousel: React.Dispatch<React.SetStateAction<CarouselResponse[]>>;
-  basketItems: BasketResponse[];
-  setBasketItems: React.Dispatch<React.SetStateAction<BasketResponse[]>>;
+  basketItems: BasketProps[];
+  setBasketItems: React.Dispatch<React.SetStateAction<BasketProps[]>>;
+  bookShopData: BasketProps[];
+  setBookShopData: React.Dispatch<React.SetStateAction<BasketProps[]>>;
 }
 
 export interface ContextValue {
@@ -101,11 +115,11 @@ export interface ContextValue {
   handleCardNumberChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleCVVChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleCloseModal: () => void;
-  handleBuy: () => void;
+  handleBuy: (bookInfo: CardsResponse) => void;
   loadingCards: () => void;
   loadingBooks: () => void;
   loadingCarousel: () => void;
-  addToBasket: (item: BasketResponse) => void;
+  addToBasket: (item: BasketProps) => void;
   removeFromBasket: (itemId: number) => void;
 }
 
@@ -122,6 +136,8 @@ const defaultValue: BookStoreData = {
   setBasketItems: () => {},
   cards: [],
   setCards: () => {},
+  bookShopData: [],
+  setBookShopData: () => {},
   loading: true,
   setLoading: () => {},
   error: "",
@@ -160,7 +176,8 @@ const BookStoreLayer = (props: React.PropsWithChildren<{}>) => {
   const [cards, setCards] = useState<CardsResponse[]>([]);
   const [books, setBooks] = useState<BooksResponse[]>([]);
   const [carousel, setCarousel] = useState<CarouselResponse[]>([]);
-  const [basketItems, setBasketItems] = useState<BasketResponse[]>([]);
+  const [basketItems, setBasketItems] = useState<BasketProps[]>([]);
+  const [bookShopData, setBookShopData] = useState<BasketProps[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [cardNumber, setCardNumber] = useState("");
@@ -213,10 +230,17 @@ const BookStoreLayer = (props: React.PropsWithChildren<{}>) => {
     handleClose();
   };
 
-  const handleBuy = () => {
-    setCardNumber("");
-    setCVV("");
-    handleClose();
+  const handleBuy = (bookInfo: CardsResponse) => {
+    addToBasket(bookInfo);
+    console.log(basketItems);
+  };
+
+  const addToBasket = (item: BasketProps) => {
+    setBasketItems([...basketItems, item]);
+  };
+
+  const removeFromBasket = (itemId: number) => {
+    setBasketItems(basketItems.filter((item) => item.id !== itemId));
   };
 
   const loadingCards = () => {
@@ -297,14 +321,6 @@ const BookStoreLayer = (props: React.PropsWithChildren<{}>) => {
     setLoading(false);
   };
 
-  const addToBasket = (item: BasketResponse) => {
-    setBasketItems([...basketItems, item]);
-  };
-
-  const removeFromBasket = (itemId: number) => {
-    setBasketItems(basketItems.filter((item) => item.id !== itemId));
-  };
-
   const EbooksHistoryData: EbooksHistoryItem[] = [
     {
       imageUrl:
@@ -349,6 +365,8 @@ const BookStoreLayer = (props: React.PropsWithChildren<{}>) => {
   ];
 
   const bookStoreData: BookStoreData = {
+    bookShopData,
+    setBookShopData,
     basketItems,
     setBasketItems,
     searchQuery,

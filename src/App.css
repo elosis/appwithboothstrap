@@ -124,6 +124,16 @@
   position: absolute;
 }
 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 .quick-add-button {
   position: absolute;
   bottom: 87.7px;

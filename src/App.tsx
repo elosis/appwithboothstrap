@@ -14,6 +14,7 @@ import Kids from "./pages/Kids";
 import { BookStoreLayer } from "./store/context";
 import SearchedBooks from "./detailedPages/SearchedBooks";
 import CarouselBooks from "./detailedPages/CarouselBooks";
+import Basket from "./components/Basket";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
             <Route path="/fiction" element={<Fiction />} />
             <Route path="/ebooks" element={<Ebooks />} />
             <Route path="/kids" element={<Kids />} />
+            <Route path="/baskets" element={<Basket />} />
             <Route path="/searchedbooks/:id" element={<SearchedBooks />} />
             <Route path="/carouselbooks/:id" element={<CarouselBooks />} />
           </Routes>

@@ -183,9 +183,12 @@ const Navbar: React.FC<NavBarProps> = () => {
                 Search
               </button>
             </form>
-            <Link to="/basket" className="btn btn-outline-primary me-2">
-              <i className="bi bi-cart2"></i>
-            </Link>
+            <div className="btn btn-outline-primary me-2">
+              <i
+                className="bi bi-cart2"
+                onClick={() => navigate("/baskets")}
+              ></i>
+            </div>
           </div>
         </div>
       </div>

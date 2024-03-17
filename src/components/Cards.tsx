@@ -7,32 +7,36 @@ import { useNavigate } from "react-router-dom";
 
 interface CardsProps {
   id?: number;
-  Title?: string;
-  Star?: number;
-  imageURL?: string;
+  newPrice?: number;
+  oldPrice?: number;
+  star?: number;
+  vote?: number;
+  title?: string;
   imageUrl?: string;
+  featureOne?: string;
+  featureTwo?: string;
+  featureThree?: string;
+  featureFour?: string;
+  overview?: string;
+  type?: string;
 }
 
 const Cards: React.FC<CardsProps> = () => {
-  const navigate = useNavigate();
-
   const {
     bookStoreData: {
       loading,
       cards,
-      cvv,
+
       windowWidth,
-      cardNumber,
-      showModal,
+
       setWindowWidth,
       visibleCardIndexes,
       setVisibleCardIndexes,
     },
     loadingCards,
-    handleCloseModal,
+
     handleShow,
-    handleCardNumberChange,
-    handleCVVChange,
+
     handlePrevButtonClick,
     handleNextButtonClick,
     handleBuy,
@@ -95,7 +99,7 @@ const Cards: React.FC<CardsProps> = () => {
             </p>
             <div className="text-center">
               <button className="btn btn-primary mt-3" onClick={handleShow}>
-                Buy
+                Add to Card
               </button>
             </div>
           </div>
@@ -109,19 +113,19 @@ const Cards: React.FC<CardsProps> = () => {
                 style={{ width: "18rem", border: "none" }}
               >
                 <img
-                  src={data?.imageURL}
-                  alt={data?.Title}
+                  src={data?.imageUrl}
+                  alt={data?.title}
                   className="card-img-top w-50 mx-auto cards-img"
                 />
                 <div
                   className="card-body"
                   style={{ padding: "12px 12px 0px 12px" }}
                 >
-                  <h5 className="card-title ">{data?.Title}</h5>
+                  <h5 className="card-title ">{data?.title}</h5>
                 </div>
                 <div className="d-flex gap-1 justify-content-center">
                   {Array.from(
-                    { length: Math.floor(data?.Star) },
+                    { length: Math.floor(data?.star) },
                     (_, index) => (
                       <i
                         key={`full-${index}`}
@@ -130,7 +134,7 @@ const Cards: React.FC<CardsProps> = () => {
                       ></i>
                     )
                   )}
-                  {data?.Star % 1 !== 0 && (
+                  {data?.star % 1 !== 0 && (
                     <i
                       className="bi bi-star-half"
                       style={{ color: "gold" }}
@@ -138,69 +142,13 @@ const Cards: React.FC<CardsProps> = () => {
                   )}
                 </div>
                 <div className="text-center mb-5  ">
-                  <button className="btn btn-primary mt-3" onClick={handleShow}>
-                    Buy
+                  <button
+                    className="btn btn-primary mt-3"
+                    onClick={() => handleBuy(data)}
+                  >
+                    Add to Card
                   </button>
                 </div>
-                {/* Modal */}
-                <Modal
-                  show={showModal}
-                  onHide={handleCloseModal}
-                  backdrop="static"
-                  keyboard={false}
-                >
-                  <Modal.Header closeButton>
-                    <Modal.Title>Enter Card Information</Modal.Title>
-                  </Modal.Header>
-                  <Modal.Body>
-                    {/* Form inputs for card information */}
-                    <div className="form-group">
-                      <label>First Name</label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Joe"
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label>Surname</label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Doe"
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label>Card Number</label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="XXXX XXXX XXXX XXXX"
-                        value={cardNumber}
-                        onChange={handleCardNumberChange}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label>CVV</label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="XXX"
-                        value={cvv}
-                        onChange={handleCVVChange}
-                      />
-                    </div>
-                    {/* Add more inputs as needed */}
-                  </Modal.Body>
-                  <Modal.Footer>
-                    <Button variant="secondary" onClick={handleCloseModal}>
-                      Close
-                    </Button>
-                    <Button variant="primary" onClick={handleBuy}>
-                      Submit
-                    </Button>
-                  </Modal.Footer>
-                </Modal>
               </div>
             ))}
           </div>
