@@ -34,7 +34,7 @@ const Basket: React.FC<BasketProps> = () => {
       acc[item.id] = 1;
     }
     return acc;
-  }, {});
+  }, {} as Quantities);
 
   const [quantities, setQuantities] = useState<Quantities>(initialQuantities);
 
@@ -88,68 +88,103 @@ const Basket: React.FC<BasketProps> = () => {
   return (
     <div>
       <Navbar />
-      <h3 className="mt-5">My Orders</h3>
-      <div className="d-flex justify-content-around">
-        <div className="border">
-          {basketItems.map((data, i) => (
-            <div
-              key={i}
-              className="d-flex mt-5 gap-5 flex-row align-items-center"
-            >
-              <img
-                src={data.imageUrl}
-                style={{ width: "5%" }}
-                alt={data.title}
-              />
-              <p>{data.title}</p>
-              <div className="input-group" style={{ width: "150px" }}>
-                <button
-                  type="button"
-                  className="btn btn-default btn-number"
-                  onClick={() => decrementQuantity(data.id ?? -1)}
-                >
-                  <span className="glyphicon glyphicon-minus text-dark">-</span>
-                </button>
-                <input
-                  type="number"
-                  name="quantity"
-                  className="form-control input-number text-center"
-                  value={quantities[data.id ?? -1] ?? 1}
-                  min="1"
-                  onChange={(e) => handleInputChange(e, data.id ?? -1)}
-                />
-                <button
-                  type="button"
-                  className="btn btn-default btn-number"
-                  onClick={() => incrementQuantity(data.id ?? -1)}
-                >
-                  <span className="glyphicon glyphicon-plus text-dark">+</span>
-                </button>
-              </div>
-              <p>
-                $
-                {calculateNewPrice(
-                  data.newPrice ?? 0,
-                  quantities[data.id ?? -1] ?? 1
-                ).toFixed(2)}
-              </p>
-            </div>
-          ))}
+      <div>
+        <div>
+          <h3 className="text-center mt-5">
+            Shopping Card ({basketItems.length}{" "}
+            {basketItems.length > 1 ? "items" : "item"})
+          </h3>
         </div>
-        <div className="border p-3">
-          <h6>Order Summary</h6>
-          <div className="d-flex gap-5">
-            <p>Total Amount</p>
-            <p>${totalAmount.toFixed(2)}</p>
+        <div className="d-flex justify-content-around mt-4">
+          <div className="border p-5">
+            {basketItems.map((data, i) => (
+              <div
+                key={i}
+                className="container d-flex mt-5 mb-5 flex-row align-items-center"
+                style={{ gap: "120px" }}
+              >
+                <img
+                  src={data.imageUrl}
+                  style={{ width: "5%" }}
+                  alt={data.title}
+                />
+                <div>
+                  <p style={{ width: "350px" }}>{data.title}</p>
+                  <div className="d-flex gap-1 align-items-center">
+                    {Array.from(
+                      { length: Math.floor(data?.star || 0) },
+                      (_, index) => (
+                        <i
+                          key={`full-${index}`}
+                          className="bi bi-star-fill"
+                          style={{ color: "gold" }}
+                        ></i>
+                      )
+                    )}
+                    {data?.star && data.star % 1 !== 0 && (
+                      <i
+                        className="bi bi-star-half"
+                        style={{ color: "gold" }}
+                      ></i>
+                    )}
+                  </div>
+                </div>
+                <div className="input-group" style={{ width: "150px" }}>
+                  <button
+                    type="button"
+                    className="btn btn-default btn-number"
+                    onClick={() => decrementQuantity(data.id ?? -1)}
+                  >
+                    <span className="glyphicon glyphicon-minus text-dark">
+                      -
+                    </span>
+                  </button>
+                  <input
+                    type="number"
+                    name="quantity"
+                    className="form-control input-number text-center"
+                    value={quantities[data.id ?? -1] ?? 1}
+                    min="1"
+                    onChange={(e) => handleInputChange(e, data.id ?? -1)}
+                  />
+                  <button
+                    type="button"
+                    className="btn btn-default btn-number"
+                    onClick={() => incrementQuantity(data.id ?? -1)}
+                  >
+                    <span className="glyphicon glyphicon-plus text-dark">
+                      +
+                    </span>
+                  </button>
+                </div>
+                <div>
+                  $
+                  {calculateNewPrice(
+                    data.newPrice ?? 0,
+                    quantities[data.id ?? -1] ?? 1
+                  ).toFixed(2)}
+                </div>
+                <div>
+                  <i className="bi bi-trash" style={{ cursor: "pointer" }}></i>
+                </div>
+              </div>
+            ))}
           </div>
-          <div className="d-flex gap-5">
-            <p>Cargo Expense</p>
-            <p>${totalCargoExpense.toFixed(2)}</p>
-          </div>
-          <div className=" container text-center mt-2 word-line" />
-          <div className="d-flex gap-5">
-            <p>Total</p>
-            <p style={{ color: "orange" }}>${grandTotal.toFixed(2)}</p>
+          <div className="border p-3 d-flex flex-column justify-content-center">
+            <h6>Order Summary</h6>
+            <div className="d-flex gap-5 mt-5">
+              <p style={{ width: "100px" }}>Total Amount</p>
+              <p>${totalAmount.toFixed(2)}</p>
+            </div>
+            <div className="d-flex gap-5 mt-3">
+              <p style={{ width: "100px" }}>Cargo Expense</p>
+              <p>${totalCargoExpense.toFixed(2)}</p>
+            </div>
+            <div className=" container text-center mt-3 word-line" />
+            <div className="d-flex gap-5">
+              <p style={{ width: "100px" }}>Total</p>
+              <p style={{ color: "orange" }}>${grandTotal.toFixed(2)}</p>
+            </div>
           </div>
         </div>
       </div>
