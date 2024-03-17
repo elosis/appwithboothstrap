@@ -77,6 +77,10 @@ export interface EbooksHistoryItem {
 export interface BookStoreData {
   cards: CardsResponse[];
   setCards: React.Dispatch<React.SetStateAction<CardsResponse[]>>;
+  showConfirmationModal: boolean;
+  setShowConfirmationModal: React.Dispatch<React.SetStateAction<boolean>>;
+  orderNumber: string;
+  setOrderNumber: React.Dispatch<React.SetStateAction<string>>;
   loading: boolean;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
   error: string;
@@ -109,6 +113,7 @@ export interface ContextValue {
   bookStoreData: BookStoreData;
   EbooksHistoryData: EbooksHistoryItem[];
   handleClose: () => void;
+  handleConfirmOrder: () => void;
   handleShow: () => void;
   handleNextButtonClick: () => void;
   handlePrevButtonClick: () => void;
@@ -126,6 +131,10 @@ export interface ContextValue {
 const defaultValue: BookStoreData = {
   searchQuery: "",
   setSearchQuery: () => {},
+  showConfirmationModal: false,
+  setShowConfirmationModal: () => {},
+  orderNumber: "",
+  setOrderNumber: () => {},
   filteredBooks: [],
   setFilteredBooks: () => {},
   carousel: [],
@@ -157,6 +166,7 @@ const defaultValue: BookStoreData = {
 const BookStoreContext = createContext<ContextValue>({
   bookStoreData: defaultValue,
   handleClose: () => {},
+  handleConfirmOrder: () => {},
   handleShow: () => {},
   handleNextButtonClick: () => {},
   handlePrevButtonClick: () => {},
@@ -178,6 +188,8 @@ const BookStoreLayer = (props: React.PropsWithChildren<{}>) => {
   const [carousel, setCarousel] = useState<CarouselResponse[]>([]);
   const [basketItems, setBasketItems] = useState<BasketProps[]>([]);
   const [bookShopData, setBookShopData] = useState<BasketProps[]>([]);
+  const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+  const [orderNumber, setOrderNumber] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [cardNumber, setCardNumber] = useState("");
@@ -228,6 +240,27 @@ const BookStoreLayer = (props: React.PropsWithChildren<{}>) => {
     setCardNumber("");
     setCVV("");
     handleClose();
+    setShowModal(false);
+  };
+
+  const handleConfirmOrder = () => {
+    const randomOrderNumber = generateOrderNumber();
+    setOrderNumber(randomOrderNumber);
+    setShowModal(false);
+    setShowConfirmationModal(true);
+  };
+
+  const generateOrderNumber = () => {
+    const characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    const length = 8;
+    let result = "";
+    for (let i = 0; i < length; i++) {
+      result += characters.charAt(
+        Math.floor(Math.random() * characters.length)
+      );
+    }
+    return result;
   };
 
   const handleBuy = (bookInfo: CardsResponse) => {
@@ -365,6 +398,10 @@ const BookStoreLayer = (props: React.PropsWithChildren<{}>) => {
   ];
 
   const bookStoreData: BookStoreData = {
+    showConfirmationModal,
+    setShowConfirmationModal,
+    orderNumber,
+    setOrderNumber,
     bookShopData,
     setBookShopData,
     basketItems,
@@ -400,6 +437,7 @@ const BookStoreLayer = (props: React.PropsWithChildren<{}>) => {
     removeFromBasket,
     bookStoreData,
     handleClose,
+    handleConfirmOrder,
     handleShow,
     handleNextButtonClick,
     handlePrevButtonClick,

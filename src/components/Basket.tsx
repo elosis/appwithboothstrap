@@ -95,7 +95,7 @@ const Basket: React.FC<BasketProps> = () => {
         <div>
           <h3 className="text-center mt-5">
             Shopping Card ({basketItems.length}{" "}
-            {basketItems.length > 1 ? "items" : "item"})
+            {basketItems.length === 1 ? "item" : "items"})
           </h3>
         </div>
         <div className="d-flex justify-content-around mt-4">
