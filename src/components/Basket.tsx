@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { BookStoreContext, useContext } from "../store/context";
 import Navbar from "../components/Navbar";
+import Modal from "../components/Modal";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
@@ -28,6 +29,7 @@ const Basket: React.FC<BasketProps> = () => {
   const {
     bookStoreData: { basketItems },
     removeFromBasket,
+    handleShow,
   } = useContext(BookStoreContext);
 
   const initialQuantities: Quantities = basketItems.reduce((acc, item) => {
@@ -189,6 +191,10 @@ const Basket: React.FC<BasketProps> = () => {
           </div>
         </div>
       </div>
+      <button className="btn btn-primary mt-3" onClick={handleShow}>
+        Buy
+      </button>
+      <Modal />
     </div>
   );
 };
