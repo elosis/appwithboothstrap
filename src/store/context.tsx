@@ -35,6 +35,7 @@ export interface CarouselResponse {
   featureFour: string;
   overview: string;
   type: string;
+  quantity: number;
 }
 
 export interface BooksResponse {
@@ -121,6 +122,7 @@ export interface ContextValue {
   handleCVVChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleCloseModal: () => void;
   handleBuy: (bookInfo: CardsResponse) => void;
+  handleBuyCarousel: (bookInfo: CarouselResponse) => void;
   loadingCards: () => void;
   loadingBooks: () => void;
   loadingCarousel: () => void;
@@ -174,6 +176,7 @@ const BookStoreContext = createContext<ContextValue>({
   handleCVVChange: (e: React.ChangeEvent<HTMLInputElement>) => {},
   handleCloseModal: () => {},
   handleBuy: () => {},
+  handleBuyCarousel: () => {},
   loadingCards: () => {},
   loadingBooks: () => {},
   loadingCarousel: () => {},
@@ -264,6 +267,11 @@ const BookStoreLayer = (props: React.PropsWithChildren<{}>) => {
   };
 
   const handleBuy = (bookInfo: CardsResponse) => {
+    addToBasket(bookInfo);
+    console.log(basketItems);
+  };
+
+  const handleBuyCarousel = (bookInfo: CarouselResponse) => {
     addToBasket(bookInfo);
     console.log(basketItems);
   };
@@ -445,6 +453,7 @@ const BookStoreLayer = (props: React.PropsWithChildren<{}>) => {
     handleCVVChange,
     handleCloseModal,
     handleBuy,
+    handleBuyCarousel,
     loadingCards,
     loadingBooks,
     loadingCarousel,

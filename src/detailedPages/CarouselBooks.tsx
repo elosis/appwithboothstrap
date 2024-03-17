@@ -22,12 +22,13 @@ export interface CarouselProps {
   featureFour: string;
   overview: string;
   type: string;
+  quantity: number;
 }
 
 const CarouselBooks = () => {
   const {
     bookStoreData: { setError, showModal },
-    handleShow,
+    handleBuyCarousel,
     handleClose,
   } = useContext(BookStoreContext);
   const { id } = useParams();
@@ -156,12 +157,12 @@ const CarouselBooks = () => {
                       stamps to save with Rewards. 10 stamps = $5 reward
                     </span>
                   </div>
-                  <div className="text-center">
+                  <div className="text-center mb-5  ">
                     <button
                       className="btn btn-primary mt-3"
-                      onClick={handleShow}
+                      onClick={() => handleBuyCarousel(singleBook)}
                     >
-                      Buy
+                      Add to Card
                     </button>
                   </div>
                   {/* Modal */}
