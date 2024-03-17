@@ -27,6 +27,7 @@ interface Quantities {
 const Basket: React.FC<BasketProps> = () => {
   const {
     bookStoreData: { basketItems },
+    removeFromBasket,
   } = useContext(BookStoreContext);
 
   const initialQuantities: Quantities = basketItems.reduce((acc, item) => {
@@ -164,7 +165,7 @@ const Basket: React.FC<BasketProps> = () => {
                     quantities[data.id ?? -1] ?? 1
                   ).toFixed(2)}
                 </div>
-                <div>
+                <div onClick={() => removeFromBasket(data.id)}>
                   <i className="bi bi-trash" style={{ cursor: "pointer" }}></i>
                 </div>
               </div>
