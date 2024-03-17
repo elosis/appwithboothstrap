@@ -97,8 +97,11 @@ const Cards: React.FC<CardsProps> = () => {
               suspense of Dracula in this mysterious story centered around a
               love that blossoms in the unlikeliest of places.
             </p>
-            <div className="text-center">
-              <button className="btn btn-primary mt-3" onClick={handleShow}>
+            <div className="text-center mb-5  ">
+              <button
+                className="btn btn-primary mt-3"
+                onClick={() => handleBuy}
+              >
                 Add to Card
               </button>
             </div>
