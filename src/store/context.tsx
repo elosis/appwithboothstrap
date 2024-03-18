@@ -123,6 +123,7 @@ export interface ContextValue {
   handleCloseModal: () => void;
   handleBuy: (bookInfo: CardsResponse) => void;
   handleBuyCarousel: (bookInfo: CarouselResponse) => void;
+  handleBuySingle: (bookInfo: CarouselResponse) => void;
   loadingCards: () => void;
   loadingBooks: () => void;
   loadingCarousel: () => void;
@@ -177,6 +178,7 @@ const BookStoreContext = createContext<ContextValue>({
   handleCloseModal: () => {},
   handleBuy: () => {},
   handleBuyCarousel: () => {},
+  handleBuySingle: () => {},
   loadingCards: () => {},
   loadingBooks: () => {},
   loadingCarousel: () => {},
@@ -268,12 +270,14 @@ const BookStoreLayer = (props: React.PropsWithChildren<{}>) => {
 
   const handleBuy = (bookInfo: CardsResponse) => {
     addToBasket(bookInfo);
-    console.log(basketItems);
   };
 
   const handleBuyCarousel = (bookInfo: CarouselResponse) => {
     addToBasket(bookInfo);
-    console.log(basketItems);
+  };
+
+  const handleBuySingle = (bookInfo: CarouselResponse) => {
+    addToBasket(bookInfo);
   };
 
   const addToBasket = (item: BasketProps) => {
@@ -454,6 +458,7 @@ const BookStoreLayer = (props: React.PropsWithChildren<{}>) => {
     handleCloseModal,
     handleBuy,
     handleBuyCarousel,
+    handleBuySingle,
     loadingCards,
     loadingBooks,
     loadingCarousel,

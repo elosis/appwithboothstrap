@@ -191,9 +191,11 @@ const Basket: React.FC<BasketProps> = () => {
           </div>
         </div>
       </div>
-      <button className="btn btn-primary mt-3" onClick={handleShow}>
-        Buy
-      </button>
+      <div className="d-flex justify-content-center mt-3">
+        <button className="btn btn-primary" onClick={handleShow}>
+          Buy
+        </button>
+      </div>
       <Modal />
     </div>
   );

@@ -21,12 +21,13 @@ export interface SingleBookProps {
   featureFour: string;
   overview: string;
   type: string;
+  quantity: number;
 }
 
 const SearchedBook = () => {
   const {
     bookStoreData: { setError, showModal },
-    handleShow,
+    handleBuySingle,
     handleClose,
   } = useContext(BookStoreContext);
   const { id } = useParams();
@@ -153,12 +154,12 @@ const SearchedBook = () => {
                       stamps to save with Rewards. 10 stamps = $5 reward
                     </span>
                   </div>
-                  <div className="text-center">
+                  <div className="text-center mb-5  ">
                     <button
                       className="btn btn-primary mt-3"
-                      onClick={handleShow}
+                      onClick={() => handleBuySingle(singleBook)}
                     >
-                      Buy
+                      Add to Card
                     </button>
                   </div>
                   {/* Modal */}

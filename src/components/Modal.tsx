@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BookStoreContext, useContext } from "../store/context";
 import { Modal as BootstrapModal, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -20,10 +20,27 @@ const Modal = () => {
     handleConfirmOrder,
   } = useContext(BookStoreContext);
 
+  const [cardInfoComplete, setCardInfoComplete] = useState(false);
+
+  const handleValidation = () => {
+    if (cardNumber.length === 19 && cvv.length === 3) {
+      setCardInfoComplete(true);
+    } else {
+      setCardInfoComplete(false);
+    }
+  };
+
+  const handleSubmit = () => {
+    if (cardInfoComplete) {
+      handleConfirmOrder();
+    } else {
+      alert("Please fill in all required card information.");
+    }
+  };
+
   return (
     <div>
       <div>
-        {/* Modal */}
         <BootstrapModal
           show={showModal}
           onHide={handleCloseModal}
@@ -34,7 +51,6 @@ const Modal = () => {
             <BootstrapModal.Title>Enter Card Information</BootstrapModal.Title>
           </BootstrapModal.Header>
           <BootstrapModal.Body>
-            {/* Form inputs for card information */}
             <div className="form-group">
               <label>First Name</label>
               <input type="text" className="form-control" placeholder="Joe" />
@@ -50,7 +66,10 @@ const Modal = () => {
                 className="form-control"
                 placeholder="XXXX XXXX XXXX XXXX"
                 value={cardNumber}
-                onChange={handleCardNumberChange}
+                onChange={(e) => {
+                  handleCardNumberChange(e);
+                  handleValidation();
+                }}
               />
             </div>
             <div className="form-group">
@@ -60,23 +79,28 @@ const Modal = () => {
                 className="form-control"
                 placeholder="XXX"
                 value={cvv}
-                onChange={handleCVVChange}
+                onChange={(e) => {
+                  handleCVVChange(e);
+                  handleValidation();
+                }}
               />
             </div>
-            {/* Add more inputs as needed */}
           </BootstrapModal.Body>
           <BootstrapModal.Footer>
             <Button variant="secondary" onClick={handleCloseModal}>
               Close
             </Button>
-            <Button variant="primary" onClick={handleConfirmOrder}>
+            <Button
+              variant="primary"
+              onClick={handleSubmit}
+              disabled={!cardInfoComplete}
+            >
               Submit
             </Button>
           </BootstrapModal.Footer>
         </BootstrapModal>
       </div>
       <div>
-        {/* Second Modal (Confirmation Modal) */}
         <BootstrapModal
           show={showConfirmationModal}
           onHide={() => setShowConfirmationModal(false)}
