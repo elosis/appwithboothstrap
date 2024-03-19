@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BookStoreContext, useContext } from "../store/context";
 import Navbar from "../components/Navbar";
 import Modal from "../components/Modal";
@@ -40,6 +40,7 @@ const Basket: React.FC<BasketProps> = () => {
   }, {} as Quantities);
 
   const [quantities, setQuantities] = useState<Quantities>(initialQuantities);
+  const [isMobileView, setIsMobileView] = useState(false);
 
   const incrementQuantity = (id: number) => {
     setQuantities((prevQuantities) => ({
@@ -88,6 +89,19 @@ const Basket: React.FC<BasketProps> = () => {
 
   const grandTotal = totalAmount + totalCargoExpense;
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobileView(window.innerWidth < 920);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <div>
       <Navbar />
@@ -98,13 +112,17 @@ const Basket: React.FC<BasketProps> = () => {
             {basketItems.length === 1 ? "item" : "items"})
           </h3>
         </div>
-        <div className="d-flex justify-content-around mt-4">
-          <div className="border p-5">
+        <div
+          className={`d-flex justify-content-around mt-4 ${
+            isMobileView ? "flex-column" : ""
+          }`}
+        >
+          <div className="p-1">
             {basketItems.map((data, i) => (
               <div
                 key={i}
                 className="container d-flex mt-5 mb-5 flex-row align-items-center"
-                style={{ gap: "120px" }}
+                style={{ gap: `${isMobileView ? "5px" : "40px"}` }}
               >
                 <img
                   src={data.imageUrl}
@@ -112,7 +130,7 @@ const Basket: React.FC<BasketProps> = () => {
                   alt={data.title}
                 />
                 <div>
-                  <p style={{ width: "350px" }}>{data.title}</p>
+                  <p className="dynamic-width">{data.title}</p>
                   <div className="d-flex gap-1 align-items-center">
                     {Array.from(
                       { length: Math.floor(data?.star || 0) },

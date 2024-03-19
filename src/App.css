@@ -19,6 +19,12 @@
   font-size: 10px;
 }
 
+.dynamic-width {
+  display: inline-block;
+  width: 207px;
+  word-wrap: break-word;
+}
+
 .left-arrow-container {
   display: flex;
   align-items: center;
@@ -122,6 +128,12 @@
 
 .position-absolute {
   position: absolute;
+}
+
+.dynamic-width {
+  display: inline-block;
+  max-width: 100%;
+  word-wrap: break-word;
 }
 
 input[type="number"]::-webkit-inner-spin-button,
