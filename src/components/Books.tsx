@@ -1,22 +1,23 @@
 import React, { useEffect, useState } from "react";
+import { icons } from "../constants/staticVariables";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 const Books = () => {
-  const icons = [
-    { icon: "bi-bookshelf", text: "BOOKSHELF" },
-    { icon: "bi-person-square", text: "MEMBERSHIP" },
-    { icon: "bi-wallet", text: "BESTSELLERS" },
-    { icon: "bi-book", text: "NEW RELEASES" },
-    { icon: "bi-pencil", text: "SIGNED EDITIONS" },
-    { icon: "bi-optical-audio", text: "AUDIOBOOKS" },
-    { icon: "bi-scissors", text: "COUPONS & DEALS" },
-    { icon: "bi-gift", text: "GIFT CARDS" },
-    { icon: "bi-search", text: "MYSTERY & CRIME" },
-    { icon: "bi-rocket", text: "SCI-FI & FANTASY" },
-    { icon: "bi-backpack", text: "TEENS & YA" },
-    { icon: "bi-music-note-beamed", text: "MUSIC & MOVIES" },
-  ];
+  // const icons = [
+  //   { icon: "bi-bookshelf", text: "BOOKSHELF" },
+  //   { icon: "bi-person-square", text: "MEMBERSHIP" },
+  //   { icon: "bi-wallet", text: "BESTSELLERS" },
+  //   { icon: "bi-book", text: "NEW RELEASES" },
+  //   { icon: "bi-pencil", text: "SIGNED EDITIONS" },
+  //   { icon: "bi-optical-audio", text: "AUDIOBOOKS" },
+  //   { icon: "bi-scissors", text: "COUPONS & DEALS" },
+  //   { icon: "bi-gift", text: "GIFT CARDS" },
+  //   { icon: "bi-search", text: "MYSTERY & CRIME" },
+  //   { icon: "bi-rocket", text: "SCI-FI & FANTASY" },
+  //   { icon: "bi-backpack", text: "TEENS & YA" },
+  //   { icon: "bi-music-note-beamed", text: "MUSIC & MOVIES" },
+  // ];
 
   const [visibleIconIndexes, setVisibleIconIndexes] = useState([
     0, 1, 2, 3, 4, 5, 6, 7,

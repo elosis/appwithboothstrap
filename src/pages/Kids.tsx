@@ -3,6 +3,7 @@ import { Modal, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Navbar from "../components/Navbar";
+import { EbooksKidsFinalistData } from "../constants/staticVariables";
 
 const Kids = () => {
   const [cardNumber, setCardNumber] = useState("");
@@ -40,85 +41,12 @@ const Kids = () => {
     handleClose();
   };
 
-  const EbooksFinalistData = [
-    {
-      title: "The Wrath of the Triple Goddess",
-      imageUrl:
-        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781368112383_p0_v1%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
-      stars: 5,
-      author: "Rick Jordan",
-    },
-    {
-      title: "The Chalice of the Gods",
-      imageUrl:
-        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781368099370_p0_v2%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
-      stars: 4,
-      author: " Rick Riordan",
-    },
-    {
-      title: "The Battle of the Labyrinth",
-      imageUrl:
-        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781368051460_p0_v3%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
-      stars: 3,
-      author: " Rick Riordan",
-    },
-    {
-      title: "The Ligthning Thief (Percy Jackson)",
-      imageUrl:
-        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781368051477_p0_v3%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
-      stars: 5,
-      author: " Rick Riordan",
-    },
-    {
-      title: "Simon Sort of Says: Award Winner",
-      imageUrl:
-        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781368082853_p0_v4%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
-      stars: 4,
-      author: " Erin Bow",
-    },
-    {
-      title: "The Mona Lisa Vanishes",
-      imageUrl:
-        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9780593643846_p0_v1%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
-      stars: 4,
-      author: " Nicholas Day",
-    },
-    {
-      title: "Eagle Drums",
-      imageUrl:
-        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781250750655_p0_v7%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
-      stars: 5,
-      author: " Nasuğraq Eainey Hopson",
-    },
-    {
-      title: "Fox Has a Problem",
-      imageUrl:
-        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9780063277922_p0_v2%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
-      stars: 2,
-      author: " Corey R.Tabor",
-    },
-    {
-      title: "Alebrijes",
-      imageUrl:
-        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781646142637_p0_v1%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
-      stars: 3,
-      author: "Donna Barba Higuera",
-    },
-    {
-      title: "The Heroes of Olympus",
-      imageUrl:
-        "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781368053099_p0_v2%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
-      stars: 3,
-      author: " Rick Riordan",
-    },
-  ];
-
   const [visibleCardIndexes, setVisibleCardIndexes] = useState([0, 1, 2, 3, 4]);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const handleNextButtonClick = () => {
     const nextIndexes = visibleCardIndexes.map(
-      (index) => (index + 1) % EbooksFinalistData.length
+      (index) => (index + 1) % EbooksKidsFinalistData.length
     );
     setVisibleCardIndexes(nextIndexes);
   };
@@ -126,7 +54,8 @@ const Kids = () => {
   const handlePrevButtonClick = () => {
     const prevIndexes = visibleCardIndexes.map(
       (index) =>
-        (index - 1 + EbooksFinalistData.length) % EbooksFinalistData.length
+        (index - 1 + EbooksKidsFinalistData.length) %
+        EbooksKidsFinalistData.length
     );
     setVisibleCardIndexes(prevIndexes);
   };
@@ -346,7 +275,7 @@ const Kids = () => {
               >
                 <div className="card-content">
                   <img
-                    src={EbooksFinalistData[index].imageUrl}
+                    src={EbooksKidsFinalistData[index].imageUrl}
                     className="card-img-top w-50 mx-auto cards-img"
                     alt="Book Cover"
                   />
@@ -355,13 +284,13 @@ const Kids = () => {
                     style={{ fontSize: "12px" }}
                   >
                     <div className="card-title">
-                      {EbooksFinalistData[index].title} by{" "}
-                      <strong>{EbooksFinalistData[index].author}</strong>
+                      {EbooksKidsFinalistData[index].title} by{" "}
+                      <strong>{EbooksKidsFinalistData[index].author}</strong>
                     </div>
 
                     <div className="d-flex gap-1 justify-content-center">
                       {Array.from({
-                        length: EbooksFinalistData[index].stars,
+                        length: EbooksKidsFinalistData[index].stars,
                       }).map((_, starIndex) => (
                         <i
                           key={starIndex}
