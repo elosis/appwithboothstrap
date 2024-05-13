@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Navbar from "../components/Navbar";
 import { useParams } from "react-router-dom";
-import { Modal, Button } from "react-bootstrap";
+
 import { BookStoreContext, useContext } from "../store/context";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import SearchedBooksModal from "../modals/SearchedBooksModal";
 
 export interface SingleBookProps {
   id: number;
@@ -163,56 +164,7 @@ const SearchedBook = () => {
                     </button>
                   </div>
                   {/* Modal */}
-                  <Modal show={showModal} onHide={handleClose}>
-                    <Modal.Header closeButton>
-                      <Modal.Title>Enter Card Information</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                      {/* Form inputs for card information */}
-                      <div className="form-group">
-                        <label>First Name</label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          placeholder="Joe"
-                        />
-                      </div>
-                      <div className="form-group">
-                        <label>Surname</label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          placeholder="Doe"
-                        />
-                      </div>
-                      <div className="form-group">
-                        <label>Card Number</label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          placeholder="XXXX XXXX XXXX XXXX"
-                        />
-                      </div>
-                      <div className="form-group">
-                        <label>CVV</label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          placeholder="XXX"
-                        />
-                      </div>
-
-                      {/* Add more inputs as needed */}
-                    </Modal.Body>
-                    <Modal.Footer>
-                      <Button variant="secondary" onClick={handleClose}>
-                        Close
-                      </Button>
-                      <Button variant="primary" onClick={handleClose}>
-                        Submit
-                      </Button>
-                    </Modal.Footer>
-                  </Modal>
+                  <SearchedBooksModal />
                 </div>
               </div>
             </div>

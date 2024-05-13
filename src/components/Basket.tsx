@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BookStoreContext, useContext } from "../store/context";
 import Navbar from "../components/Navbar";
-import Modal from "../components/Modal";
+import MainModal from "../modals/MainModal";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
@@ -214,7 +214,7 @@ const Basket: React.FC<BasketProps> = () => {
           Buy
         </button>
       </div>
-      <Modal />
+      <MainModal />
     </div>
   );
 };

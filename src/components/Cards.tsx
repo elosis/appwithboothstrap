@@ -1,9 +1,7 @@
 import React, { useEffect } from "react";
-import { Modal, Button } from "react-bootstrap";
 import { BookStoreContext, useContext } from "../store/context";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import { useNavigate } from "react-router-dom";
 
 interface CardsProps {
   id?: number;

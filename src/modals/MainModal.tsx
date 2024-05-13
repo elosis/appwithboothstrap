@@ -4,7 +4,7 @@ import { Modal as BootstrapModal, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
-const Modal = () => {
+const MainModal = () => {
   const {
     bookStoreData: {
       showModal,
@@ -126,4 +126,4 @@ const Modal = () => {
   );
 };
 
-export default Modal;
+export default MainModal;
