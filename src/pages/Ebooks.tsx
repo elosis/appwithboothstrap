@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Modal, Button } from "react-bootstrap";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Navbar from "../components/Navbar";
 import { EbooksFinalistData } from "../constants/staticVariables";
 import { imageTrendingData } from "../constants/staticVariables";
 import { BookStoreContext } from "../store/context";
-import EBooksModal from "../modals/EBooksModal";
+import PagesModal from "../modals/PagesModal";
 
 const Ebooks = () => {
   const { handleShow } = useContext(BookStoreContext);
@@ -76,7 +76,7 @@ const Ebooks = () => {
                 className="img-fluid rounded w-100"
                 alt="..."
               />
-              <EBooksModal />
+              <PagesModal />
               {windowWidth >= 1400 && (
                 <button className="quick-add-button-nook" onClick={handleShow}>
                   QUICK ADD

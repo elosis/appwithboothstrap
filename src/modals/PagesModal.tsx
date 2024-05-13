@@ -1,12 +1,11 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Modal, Button } from "react-bootstrap";
 import { BookStoreContext } from "../store/context";
 
-const EBooksModal = () => {
+const PagesModal = () => {
   const {
     bookStoreData: { showModal, setCardNumber, setCVV, cardNumber, cvv },
     handleClose,
-    handleShow,
   } = useContext(BookStoreContext);
 
   const handleCardNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -94,4 +93,4 @@ const EBooksModal = () => {
   );
 };
 
-export default EBooksModal;
+export default PagesModal;
