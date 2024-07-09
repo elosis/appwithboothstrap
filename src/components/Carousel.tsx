@@ -75,7 +75,6 @@ const Carousel = () => {
           >
             <img
               src={data?.imageUrl}
-              style={{ height: "450px" }}
               className="d-block mini-photo mx-auto w-75"
               alt={`Slide ${i + 1}`}
             />
