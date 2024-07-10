@@ -90,7 +90,7 @@ const Cards: React.FC<CardsProps> = () => {
               <i className="bi bi-star-fill" style={{ color: "gold" }}></i>
             </div>
 
-            <p className="card-text mt-2">
+            <p className="card-text mt-2 gothic-text">
               The eternal romance of Beauty and the Beast meets the gothic
               suspense of Dracula in this mysterious story centered around a
               love that blossoms in the unlikeliest of places.
@@ -109,7 +109,7 @@ const Cards: React.FC<CardsProps> = () => {
           <div className="row">
             {cards?.map((data, i) => (
               <div
-                className="card "
+                className="card"
                 key={i}
                 style={{ width: "18rem", border: "none" }}
               >
