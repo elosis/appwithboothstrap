@@ -111,6 +111,11 @@
   position: relative;
 }
 
+.card-img-top {
+  width: 50%;
+  max-width: 100%;
+}
+
 .modal-backdrop {
   transition: opacity 0.3s ease-in-out;
   opacity: 0.2 !important; /* Adjust opacity as needed */
@@ -296,6 +301,10 @@ input[type="number"] {
 
   .responsive-paragraph {
     font-size: 0.875rem;
+  }
+
+  .card-img-top {
+    width: 100%;
   }
 }
 

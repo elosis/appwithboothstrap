@@ -108,47 +108,45 @@ const Cards: React.FC<CardsProps> = () => {
         <div className="container text-center d-flex flex-column gap-4">
           <div className="row">
             {cards?.map((data, i) => (
-              <div
-                className="card"
-                key={i}
-                style={{ width: "18rem", border: "none" }}
-              >
-                <img
-                  src={data?.imageUrl}
-                  alt={data?.title}
-                  className="card-img-top w-50 mx-auto cards-img"
-                />
-                <div
-                  className="card-body"
-                  style={{ padding: "12px 12px 0px 12px" }}
-                >
-                  <h5 className="card-title ">{data?.title}</h5>
-                </div>
-                <div className="d-flex gap-1 justify-content-center">
-                  {Array.from(
-                    { length: Math.floor(data?.star) },
-                    (_, index) => (
+              <div className="col-12 col-md-6 col-lg-3 col-sm-6" key={i}>
+                <div className="card" style={{ width: "100%", border: "none" }}>
+                  <img
+                    src={data?.imageUrl}
+                    alt={data?.title}
+                    className="card-img-top w-100 mx-auto cards-img"
+                  />
+                  <div
+                    className="card-body"
+                    style={{ padding: "12px 12px 0px 12px" }}
+                  >
+                    <h5 className="card-title ">{data?.title}</h5>
+                  </div>
+                  <div className="d-flex gap-1 justify-content-center">
+                    {Array.from(
+                      { length: Math.floor(data?.star) },
+                      (_, index) => (
+                        <i
+                          key={`full-${index}`}
+                          className="bi bi-star-fill"
+                          style={{ color: "gold" }}
+                        ></i>
+                      )
+                    )}
+                    {data?.star % 1 !== 0 && (
                       <i
-                        key={`full-${index}`}
-                        className="bi bi-star-fill"
+                        className="bi bi-star-half"
                         style={{ color: "gold" }}
                       ></i>
-                    )
-                  )}
-                  {data?.star % 1 !== 0 && (
-                    <i
-                      className="bi bi-star-half"
-                      style={{ color: "gold" }}
-                    ></i>
-                  )}
-                </div>
-                <div className="text-center mb-5  ">
-                  <button
-                    className="btn btn-primary mt-3"
-                    onClick={() => handleBuy(data)}
-                  >
-                    Add to Card
-                  </button>
+                    )}
+                  </div>
+                  <div className="text-center mb-5  ">
+                    <button
+                      className="btn btn-primary mt-3"
+                      onClick={() => handleBuy(data)}
+                    >
+                      Add to Cart
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}
