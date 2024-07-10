@@ -265,6 +265,23 @@ input[type="number"] {
   transform: translateY(0);
 }
 
+@media (max-width: 1336px) {
+  .search-stores-events {
+    order: 1;
+  }
+
+  .featured-events {
+    order: 2;
+    margin-top: 2rem; /* Add some space between the sections */
+  }
+}
+
+@media (min-width: 1337px) {
+  .featured-events {
+    margin-top: 0;
+  }
+}
+
 @media (max-width: 1200px) {
   .responsive-heading {
     font-size: 2.5rem;
