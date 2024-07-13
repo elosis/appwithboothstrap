@@ -323,6 +323,11 @@ input[type="number"] {
   .card-img-top {
     width: 100%;
   }
+
+  .responsive-button {
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+  }
 }
 
 @media (max-width: 576px) {

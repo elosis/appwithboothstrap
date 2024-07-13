@@ -6,6 +6,7 @@ import Navbar from "../components/Navbar";
 import { fictionData } from "../constants/staticVariables";
 import PagesModal from "../modals/PagesModal";
 import { BookStoreContext } from "../store/context";
+import "../App.css";
 
 const Fiction = () => {
   const { handleShow } = useContext(BookStoreContext);
@@ -61,7 +62,7 @@ const Fiction = () => {
             <span> 50% Off Select Books</span>
           </div>
 
-          <div className="d-flex justify-content-center mt-5 position-relative">
+          <div className="d-flex justify-content-center mt-5 position-relative ">
             <div
               className="card card-content"
               style={{ width: "18rem", border: "none" }}
@@ -80,8 +81,10 @@ const Fiction = () => {
                 </button>
               )}
               <div className="card-body text-center">
-                <h5 className="card-title">None of This is True</h5>
-                <div className="d-flex gap-1 justify-content-center">
+                <h5 className="card-title responsive-paragraph">
+                  None of This is True
+                </h5>
+                <div className="d-flex gap-1 justify-content-center responsive-paragraph">
                   <i className="bi bi-star-fill" style={{ color: "gold" }}></i>
                   <i className="bi bi-star-fill" style={{ color: "gold" }}></i>
                   <i className="bi bi-star-fill" style={{ color: "gold" }}></i>
@@ -111,8 +114,10 @@ const Fiction = () => {
                 </button>
               )}
               <div className="card-body text-center">
-                <h5 className="card-title">The Wolfsong in Nature</h5>
-                <div className="d-flex gap-1 justify-content-center">
+                <h5 className="card-title responsive-paragraph">
+                  The Wolfsong in Nature
+                </h5>
+                <div className="d-flex gap-1 justify-content-center responsive-paragraph">
                   <i className="bi bi-star-fill" style={{ color: "gold" }}></i>
                   <i className="bi bi-star-fill" style={{ color: "gold" }}></i>
                   <i className="bi bi-star-fill" style={{ color: "gold" }}></i>
@@ -142,8 +147,10 @@ const Fiction = () => {
                 </button>
               )}
               <div className="card-body text-center">
-                <h5 className="card-title">Pineapple Street: A Novel</h5>
-                <div className="d-flex gap-1 justify-content-center">
+                <h5 className="card-title responsive-paragraph">
+                  Pineapple Street: A Novel
+                </h5>
+                <div className="d-flex gap-1 justify-content-center responsive-paragraph">
                   <i className="bi bi-star-fill" style={{ color: "gold" }}></i>
                   <i className="bi bi-star-fill" style={{ color: "gold" }}></i>
                   <i className="bi bi-star-fill" style={{ color: "gold" }}></i>
@@ -173,8 +180,10 @@ const Fiction = () => {
                 </button>
               )}
               <div className="card-body text-center">
-                <h5 className="card-title">Soul of Ash and Blood</h5>
-                <div className="d-flex gap-1 justify-content-center">
+                <h5 className="card-title responsive-paragraph">
+                  Soul of Ash and Blood
+                </h5>
+                <div className="d-flex gap-1 justify-content-center responsive-paragraph">
                   <i className="bi bi-star-fill" style={{ color: "gold" }}></i>
                   <i className="bi bi-star-fill" style={{ color: "gold" }}></i>
                   <i className="bi bi-star-fill" style={{ color: "gold" }}></i>
@@ -204,8 +213,10 @@ const Fiction = () => {
                 </button>
               )}
               <div className="card-body text-center">
-                <h5 className="card-title">The Rachel Incident </h5>
-                <div className="d-flex gap-1 justify-content-center">
+                <h5 className="card-title responsive-paragraph">
+                  The Rachel Incident{" "}
+                </h5>
+                <div className="d-flex gap-1 justify-content-center responsive-paragraph">
                   <i className="bi bi-star-fill" style={{ color: "gold" }}></i>
                   <i className="bi bi-star-fill" style={{ color: "gold" }}></i>
                   <i className="bi bi-star-fill" style={{ color: "gold" }}></i>
@@ -282,8 +293,11 @@ const Fiction = () => {
           <div className="d-flex mt-5">
             <div
               style={{ borderRight: "1px solid black", paddingRight: "15px" }}
+              className="responsive-paragraph"
             >
-              <h5>This Month's Pick: Cleopatra and Frankenstein:</h5>
+              <h5 className="responsive-paragraph">
+                This Month's Pick: Cleopatra and Frankenstein:
+              </h5>
               <p className="mt-4">
                 Darkly entertaining, subtly heartbreaking, but nonetheless a joy
                 to read, Cleopatra and Frankenstein bandies with themes of
