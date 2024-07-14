@@ -290,7 +290,7 @@ const Fiction = () => {
           <div className="text-center mt-5 word-line">
             <span>Our Fiction Monthly Picks</span>
           </div>
-          <div className="d-flex mt-5">
+          <div className="d-flex flex-column flex-lg-row mt-5">
             <div
               style={{ borderRight: "1px solid black", paddingRight: "15px" }}
               className="responsive-paragraph"
@@ -326,10 +326,10 @@ const Fiction = () => {
                         alt="Book Cover"
                       />
                       <div className="card-body text-center">
-                        <div className="card-title">
+                        <div className="card-title responsive-paragraph">
                           {fictionData[index].title}
                         </div>
-                        <p className="card-text">
+                        <p className="card-text responsive-paragraph">
                           by <strong>{fictionData[index].author}</strong>
                         </p>
                       </div>
