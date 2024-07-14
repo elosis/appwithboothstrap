@@ -339,6 +339,10 @@ input[type="number"] {
     font-size: 0.75rem;
   }
 
+  .responsive-text {
+    font-size: 0.5rem;
+  }
+
   .gothic-text {
     font-size: 0.65rem;
   }

@@ -119,7 +119,7 @@ const Ebooks = () => {
             <span>
               <strong>NOOK</strong>
             </span>
-            <h1>$149.99</h1>
+            <h1 className="responsive-heading">$149.99</h1>
           </div>
         </div>
         <div className="container">
@@ -150,7 +150,7 @@ const Ebooks = () => {
                     className="card-body text-center w-50"
                     style={{ fontSize: "12px" }}
                   >
-                    <div className="card-title">
+                    <div className="card-title responsive-text">
                       {EbooksFinalistData[index].title} by{" "}
                       <strong>{EbooksFinalistData[index].author}</strong>
                     </div>
