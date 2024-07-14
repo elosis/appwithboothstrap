@@ -194,7 +194,7 @@ const Kids = () => {
                     className="card-body text-center w-50"
                     style={{ fontSize: "12px" }}
                   >
-                    <div className="card-title">
+                    <div className="card-title responsive-text">
                       {EbooksKidsFinalistData[index].title} by{" "}
                       <strong>{EbooksKidsFinalistData[index].author}</strong>
                     </div>
@@ -244,7 +244,7 @@ const Kids = () => {
               alt="..."
             />
             <div className="card-body text-center">
-              <p className="card-text">
+              <p className="card-text responsive-paragraph">
                 Our Most Anticipated Kids’ Books February 2024
               </p>
               <div className="d-flex flex-row justify-content-center gap-2">
@@ -252,7 +252,12 @@ const Kids = () => {
                   className="bi bi-book-half"
                   style={{ color: "darkblue" }}
                 ></i>
-                <span style={{ color: "green" }}>Isabelle McConville</span>
+                <span
+                  className="responsive-paragraph"
+                  style={{ color: "green" }}
+                >
+                  Isabelle McConville
+                </span>
               </div>
             </div>
           </div>
@@ -263,7 +268,7 @@ const Kids = () => {
               alt="..."
             />
             <div className="card-body text-center">
-              <p className="card-text">
+              <p className="card-text responsive-paragraph">
                 Our Most Anticipated Kids Books of November/December 2023
               </p>
               <div className="d-flex flex-row justify-content-center gap-2">
@@ -271,7 +276,12 @@ const Kids = () => {
                   className="bi bi-book-half"
                   style={{ color: "darkblue" }}
                 ></i>
-                <span style={{ color: "green" }}>Brittany Bunzey</span>
+                <span
+                  className="responsive-paragraph"
+                  style={{ color: "green" }}
+                >
+                  Brittany Bunzey
+                </span>
               </div>
             </div>
           </div>
@@ -282,7 +292,7 @@ const Kids = () => {
               alt="..."
             />
             <div className="card-body text-center">
-              <p className="card-text">
+              <p className="card-text responsive-paragraph">
                 Writing is About Paying Attention: An Exclusive Guest Post from
                 Kate DiCamillo, Author of The Puppets of Spelhorst
               </p>
@@ -291,7 +301,12 @@ const Kids = () => {
                   className="bi bi-book-half"
                   style={{ color: "darkblue" }}
                 ></i>
-                <span style={{ color: "green" }}>Kate DiCamillo</span>
+                <span
+                  className="responsive-paragraph"
+                  style={{ color: "green" }}
+                >
+                  Kate DiCamillo
+                </span>
               </div>
             </div>
           </div>
