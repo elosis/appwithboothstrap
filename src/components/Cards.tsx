@@ -113,7 +113,7 @@ const Cards: React.FC<CardsProps> = () => {
                   <img
                     src={data?.imageUrl}
                     alt={data?.title}
-                    className="card-img-top w-100 mx-auto cards-img"
+                    className="card-img-top w-50 mx-auto cards-img"
                   />
                   <div
                     className="card-body"
